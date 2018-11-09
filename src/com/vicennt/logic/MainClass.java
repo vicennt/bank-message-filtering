@@ -5,6 +5,8 @@
  */
 package com.vicennt.logic;
 
+import com.vicennt.presentation.MainFrame;
+
 /**
  *
  * @author vicent
@@ -15,7 +17,8 @@ public class MainClass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        MainFrame mf = new MainFrame();
+        mf.setVisible(true);     
     }
     
 }
