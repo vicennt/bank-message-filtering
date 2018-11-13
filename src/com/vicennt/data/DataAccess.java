@@ -5,10 +5,29 @@
  */
 package com.vicennt.data;
 
+import com.vicennt.logic.Abbreviation;
+import com.vicennt.logic.Message;
+import java.util.ArrayList;
+
 /**
  *
  * @author vicent
  */
 public class DataAccess implements IDataAccess {
+
+    @Override
+    public void writeMessagesToFile(ArrayList<Message> messages) {
+        
+    }
+
+    @Override
+    public ArrayList<Message> readMessagesFromFile() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Abbreviation> getAbbreviations() {
+        return null;
+    }
     
 }
