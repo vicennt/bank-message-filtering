@@ -5,20 +5,26 @@
  */
 package com.vicennt.logic;
 
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author vicent
  */
 public class Sms extends MessageAbbreviation {
-
-    @Override
-    public String replaceAbbreviations() {
-        return "";
+    
+    public Sms(String msgId, String msgSender, String msgBody, Map<String, String> abbreviationDic){
+        super(msgId, msgSender, msgBody, abbreviationDic);
     }
 
     @Override
     public boolean validateMessage() {
-        return true;
+        String regex = "^\\+[0-9]{1,3}\\.[0-9]{4,14}(?:x.+)?$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(msgSender);
+        return matcher.matches() && msgBody.length() <= 140;
     }
-    
+
 }
