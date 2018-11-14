@@ -6,6 +6,7 @@
 package com.vicennt.presentation;
 
 import com.vicennt.logic.INapierBankService;
+import com.vicennt.logic.Sms;
 
 /**
  *
@@ -74,6 +75,11 @@ public class SmsForm extends NapierBankFormBase {
         });
 
         btnSendSms.setText("Send message");
+        btnSendSms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendSmsActionPerformed(evt);
+            }
+        });
 
         lblSmsTitle.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
         lblSmsTitle.setText("Write an SMS");
@@ -151,6 +157,17 @@ public class SmsForm extends NapierBankFormBase {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosed
+
+    private void btnSendSmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendSmsActionPerformed
+        String id = txtSmsType.getText() + txtSmsId.getText();
+        String numPhone = txtSmsPhone.getText();
+        String body = txtSmsBody.getText();
+        Sms sms = new Sms(id, numPhone, body, service.getAbbreviations());
+        if(sms.validateMessage()){
+            sms.replaceAbbreviations();
+            service.saveSMS(sms);
+        }           
+    }//GEN-LAST:event_btnSendSmsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

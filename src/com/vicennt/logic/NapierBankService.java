@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vicennt.logic;
 
 import com.vicennt.data.IDataAccess;
+import java.util.Map;
 
 /**
  *
@@ -35,11 +31,18 @@ public class NapierBankService implements INapierBankService {
     }
 
     @Override
-    public void newMessage() {
+    public void loadMessages() {
     }
 
     @Override
-    public void loadMessages() {
+    public Map<String, String> getAbbreviations() {
+        //TODO: Get abreviations from CSV
+        return null;
+    }
+
+    @Override
+    public void saveSMS(Sms sms) {
+        //TODO: Write object in a JSON file
     }
     
 }

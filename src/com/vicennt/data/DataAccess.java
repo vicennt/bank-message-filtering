@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vicennt.data;
 
-import com.vicennt.logic.Abbreviation;
 import com.vicennt.logic.Message;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *
@@ -26,7 +21,7 @@ public class DataAccess implements IDataAccess {
     }
 
     @Override
-    public ArrayList<Abbreviation> getAbbreviations() {
+    public Map<String, String> getAbbreviations() {
         return null;
     }
     

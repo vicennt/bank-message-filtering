@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vicennt.logic;
 
 import com.vicennt.data.DataAccess;
@@ -21,7 +16,7 @@ public class MainClass {
         INapierBankService service = new NapierBankService(new DataAccess());
         InputSessionForm nb = new InputSessionForm(service);
         nb.setLocationRelativeTo(null);
-        nb.setVisible(true);     
+        nb.setVisible(true);   
     }
     
 }

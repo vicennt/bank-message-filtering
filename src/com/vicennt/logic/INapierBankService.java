@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vicennt.logic;
+
+import java.util.Map;
 
 /**
  *
@@ -14,6 +11,7 @@ public interface INapierBankService {
     void addNatureIndidentSIRList();
     void addHashtagsHTList();
     void addMentionsMTList();
-    void newMessage();
+    Map<String, String> getAbbreviations();
+    void saveSMS(Sms sms);
     void loadMessages();
 }
