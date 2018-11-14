@@ -20,6 +20,7 @@ public class MainClass {
     public static void main(String[] args) {
         INapierBankService service = new NapierBankService(new DataAccess());
         InputSessionForm nb = new InputSessionForm(service);
+        nb.setLocationRelativeTo(null);
         nb.setVisible(true);     
     }
     

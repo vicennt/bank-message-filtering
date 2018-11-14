@@ -1,23 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vicennt.presentation;
 
 import com.vicennt.logic.INapierBankService;
-import java.awt.Container;
-import javax.swing.JPanel;
+
 
 /**
  *
  * @author vicent
  */
+
 public class InputSessionForm extends NapierBankFormBase {
 
-    /**
-     * Creates new form MainFrame
-     */
     public InputSessionForm(INapierBankService service) {
         super(service);
         initComponents();
@@ -34,8 +26,8 @@ public class InputSessionForm extends NapierBankFormBase {
         btnEmail = new javax.swing.JButton();
         btnTweet = new javax.swing.JButton();
         btnSMS = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        lblSubtitle = new javax.swing.JLabel();
+        btnEndSession = new javax.swing.JButton();
         mainMenu = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuItemOpenFile = new javax.swing.JMenuItem();
@@ -49,7 +41,7 @@ public class InputSessionForm extends NapierBankFormBase {
         secondPanel.setBackground(new java.awt.Color(191, 191, 191));
 
         btnEmail.setBackground(new java.awt.Color(242, 242, 242));
-        btnEmail.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        btnEmail.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         btnEmail.setText("Email");
         btnEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,11 +50,16 @@ public class InputSessionForm extends NapierBankFormBase {
         });
 
         btnTweet.setBackground(new java.awt.Color(242, 242, 242));
-        btnTweet.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        btnTweet.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         btnTweet.setText("Tweet");
+        btnTweet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTweetActionPerformed(evt);
+            }
+        });
 
         btnSMS.setBackground(new java.awt.Color(242, 242, 242));
-        btnSMS.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        btnSMS.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         btnSMS.setText("SMS");
         btnSMS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,41 +67,41 @@ public class InputSessionForm extends NapierBankFormBase {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        jLabel1.setText("Please chose one type of message");
+        lblSubtitle.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
+        lblSubtitle.setText("Please chose one type of message");
 
         javax.swing.GroupLayout secondPanelLayout = new javax.swing.GroupLayout(secondPanel);
         secondPanel.setLayout(secondPanelLayout);
         secondPanelLayout.setHorizontalGroup(
             secondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(secondPanelLayout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
+                .addContainerGap(124, Short.MAX_VALUE)
                 .addGroup(secondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, secondPanelLayout.createSequentialGroup()
-                        .addComponent(btnSMS, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(btnTweet, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94))
+                        .addComponent(btnSMS, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnTweet, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(135, 135, 135))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, secondPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblSubtitle)
                         .addGap(344, 344, 344))))
         );
         secondPanelLayout.setVerticalGroup(
             secondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(secondPanelLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jLabel1)
+                .addComponent(lblSubtitle)
                 .addGap(62, 62, 62)
                 .addGroup(secondPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSMS, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTweet, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSMS, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTweet, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
-        jButton1.setText("End Input Session");
+        btnEndSession.setText("End current session");
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -118,10 +115,11 @@ public class InputSessionForm extends NapierBankFormBase {
                         .addGap(53, 53, 53))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addComponent(lblSendMsg)
-                        .addGap(291, 291, 291))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(325, 325, 325))))
+                        .addGap(291, 291, 291))))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(332, 332, 332)
+                .addComponent(btnEndSession, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,9 +128,8 @@ public class InputSessionForm extends NapierBankFormBase {
                 .addComponent(lblSendMsg)
                 .addGap(32, 32, 32)
                 .addComponent(secondPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(71, 71, 71)
+                .addComponent(btnEndSession))
         );
 
         menuFile.setText("File");
@@ -172,22 +169,32 @@ public class InputSessionForm extends NapierBankFormBase {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmailActionPerformed
-        // TODO add your handling code here:
+        EmailForm emailForm = new EmailForm(service);
+        emailForm.setLocationRelativeTo(null);
+        emailForm.setVisible(true);
     }//GEN-LAST:event_btnEmailActionPerformed
 
     private void btnSMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSMSActionPerformed
-
+        SmsForm smsForm = new SmsForm(service);
+        smsForm.setLocationRelativeTo(null);
+        smsForm.setVisible(true);
     }//GEN-LAST:event_btnSMSActionPerformed
+
+    private void btnTweetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTweetActionPerformed
+        TweetForm tweetForm = new TweetForm(service);
+        tweetForm.setLocationRelativeTo(null);
+        tweetForm.setVisible(true);
+    }//GEN-LAST:event_btnTweetActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEmail;
+    private javax.swing.JButton btnEndSession;
     private javax.swing.JButton btnSMS;
     private javax.swing.JButton btnTweet;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblSendMsg;
+    private javax.swing.JLabel lblSubtitle;
     private javax.swing.JMenuBar mainMenu;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu menuFile;
