@@ -12,4 +12,8 @@ package com.vicennt.logic;
 public class SignificantIncidentReport extends Email {
     private String sortCode;
     private String natureIncident;
+
+    public SignificantIncidentReport(String msgId, String msgSender, String msgBody) {
+        super(msgId, msgSender, msgBody);
+    }
 }

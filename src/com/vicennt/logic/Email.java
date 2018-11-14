@@ -5,12 +5,18 @@
  */
 package com.vicennt.logic;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author vicent
  */
 public class Email extends Message {
     private String subject;
+    
+    public Email(String msgId, String msgSender, String msgBody){
+        super(msgId, msgSender, msgBody);
+    }
 
     @Override
     public boolean validateMessage() {

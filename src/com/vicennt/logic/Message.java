@@ -10,8 +10,13 @@ package com.vicennt.logic;
  * @author vicent
  */
 public abstract class Message {
-    private String msgId;
-    private String msgSender;
-    private String msgBody;    
+    protected String msgId;
+    protected String msgSender;
+    protected String msgBody;    
+    public Message(String msgId, String msgSender, String msgBody){
+        this.msgId = msgId;
+        this.msgSender = msgSender;
+        this.msgBody = msgBody;
+    }
     public abstract boolean validateMessage();
 }
