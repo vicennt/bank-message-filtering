@@ -5,13 +5,13 @@
  */
 package com.vicennt.logic;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author vicent
  */
-public abstract class Message {
-    private String msgId;
-    private String msgSender;
-    private String msgBody;    
-    public abstract boolean validateMessage();
+public abstract class MessageAbbreviation extends Message {
+    private ArrayList<Abbreviation> abbList; 
+    public abstract String replaceAbbreviations();
 }

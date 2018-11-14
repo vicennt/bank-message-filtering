@@ -11,11 +11,35 @@ import com.vicennt.data.IDataAccess;
  *
  * @author vicent
  */
-public class NapierBankService {
+public class NapierBankService implements INapierBankService {
     
     private IDataAccess dal;
     public NapierBankService(IDataAccess dal){
         this.dal = dal;
+    }
+
+    @Override
+    public void addSortCodeSIRList() {
+    }
+
+    @Override
+    public void addNatureIndidentSIRList() {
+    }
+
+    @Override
+    public void addHashtagsHTList() {
+    }
+
+    @Override
+    public void addMentionsMTList() {
+    }
+
+    @Override
+    public void newMessage() {
+    }
+
+    @Override
+    public void loadMessages() {
     }
     
 }

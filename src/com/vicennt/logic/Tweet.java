@@ -9,6 +9,16 @@ package com.vicennt.logic;
  *
  * @author vicent
  */
-public class Tweet extends Message {
+public class Tweet extends MessageAbbreviation {
+
+    @Override
+    public String replaceAbbreviations() {
+        return "";
+    }
+
+    @Override
+    public boolean validateMessage() {
+        return true;
+    }
     
 }

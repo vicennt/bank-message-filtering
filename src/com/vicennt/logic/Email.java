@@ -11,4 +11,9 @@ package com.vicennt.logic;
  */
 public class Email extends Message {
     private String subject;
+
+    @Override
+    public boolean validateMessage() {
+        return true;
+    }
 }

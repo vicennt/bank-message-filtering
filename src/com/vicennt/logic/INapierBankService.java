@@ -10,5 +10,10 @@ package com.vicennt.logic;
  * @author vicent
  */
 public interface INapierBankService {
-    // All funtionality
+    void addSortCodeSIRList();
+    void addNatureIndidentSIRList();
+    void addHashtagsHTList();
+    void addMentionsMTList();
+    void newMessage();
+    void loadMessages();
 }
