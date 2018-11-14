@@ -5,7 +5,8 @@
  */
 package com.vicennt.logic;
 
-import com.vicennt.presentation.MainFrame;
+import com.vicennt.data.DataAccess;
+import com.vicennt.presentation.InputSessionForm;
 
 /**
  *
@@ -17,8 +18,9 @@ public class MainClass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MainFrame mf = new MainFrame();
-        mf.setVisible(true);     
+        INapierBankService service = new NapierBankService(new DataAccess());
+        InputSessionForm nb = new InputSessionForm(service);
+        nb.setVisible(true);     
     }
     
 }
