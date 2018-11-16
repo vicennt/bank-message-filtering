@@ -9,12 +9,15 @@ import java.util.Map;
  */
 
 public abstract class MessageAbbreviation extends Message {
+    
     private Map<String, String> abbreviationDic; 
+    
     public MessageAbbreviation(String msgId, String msgSender, String msgBody, 
             Map<String, String> abbreviationDic){
         super(msgId, msgSender, msgBody);
         this.abbreviationDic = abbreviationDic;
     }
+    
     public String replaceAbbreviations(){
         String[] msgBodySplited = msgBody.split(" ");
         String msgResult = "";
