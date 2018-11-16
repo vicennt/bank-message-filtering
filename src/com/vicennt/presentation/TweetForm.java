@@ -2,6 +2,7 @@ package com.vicennt.presentation;
 
 import com.vicennt.logic.INapierBankService;
 import com.vicennt.logic.Tweet;
+import java.util.Map;
 
 /**
  *
@@ -132,13 +133,10 @@ public class TweetForm extends NapierBankFormBase {
         String user = txtTweetUser.getText();
         String body = txtTweetBody.getText();
         Tweet tweet = new Tweet(id, user, body, service.getAbbreviations());
-        //if(sms.validateMessage()){
-            System.out.println("VALIDATE!");
-            String value = tweet.replaceAbbreviations();
-            System.out.println("AFTER ABRV: " + value);
-            System.out.println("Hashtags: " + tweet.getHashtags().toString());
-            System.out.println("Mentions: " + tweet.getMentions().toString());
-        //} 
+        if(tweet.validateMessage()){
+            String value = tweet.replaceAbbreviations(); // This variable will be writte into a JSON file
+            Map<String, Integer> map = tweet.getHashtags();
+        } 
         this.setVisible(false);
     }//GEN-LAST:event_btnSendTweetActionPerformed
 
