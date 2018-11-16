@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.vicennt.logic;
-
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

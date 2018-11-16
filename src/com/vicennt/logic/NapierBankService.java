@@ -36,13 +36,12 @@ public class NapierBankService implements INapierBankService {
 
     @Override
     public Map<String, String> getAbbreviations() {
-        //TODO: Get abreviations from CSV
-        return null;
+        return dal.getAbbreviations();
     }
 
     @Override
     public void saveSMS(Sms sms) {
-        //TODO: Write object in a JSON file
+        
     }
     
 }

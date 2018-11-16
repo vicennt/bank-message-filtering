@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vicennt.logic;
 
 /**
@@ -18,5 +13,31 @@ public abstract class Message {
         this.msgSender = msgSender;
         this.msgBody = msgBody;
     }
+    
     public abstract boolean validateMessage();
+
+    public String getMsgId() {
+        return msgId;
+    }
+
+    public void setMsgId(String msgId) {
+        this.msgId = msgId;
+    }
+
+    public String getMsgSender() {
+        return msgSender;
+    }
+
+    public void setMsgSender(String msgSender) {
+        this.msgSender = msgSender;
+    }
+
+    public String getMsgBody() {
+        return msgBody;
+    }
+
+    public void setMsgBody(String msgBody) {
+        this.msgBody = msgBody;
+    }
+    
 }
