@@ -6,6 +6,8 @@
 package com.vicennt.presentation;
 
 import com.vicennt.logic.INapierBankService;
+import com.vicennt.logic.Tweet;
+import java.util.Map;
 
 /**
  *
@@ -62,6 +64,11 @@ public class TweetForm extends NapierBankFormBase {
         scrollTweetBody.setViewportView(txtTweetBody);
 
         btnSendTweet.setText("Send Tweet");
+        btnSendTweet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendTweetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainTweetPanelLayout = new javax.swing.GroupLayout(mainTweetPanel);
         mainTweetPanel.setLayout(mainTweetPanelLayout);
@@ -125,6 +132,21 @@ public class TweetForm extends NapierBankFormBase {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSendTweetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendTweetActionPerformed
+        String id = txtTweetType.getText() + txtTweetId.getText();
+        String user = txtTweetUser.getText();
+        String body = txtTweetBody.getText();
+        Tweet tweet = new Tweet(id, user, body, service.getAbbreviations());
+        //if(sms.validateMessage()){
+            System.out.println("VALIDATE!");
+            String value = tweet.replaceAbbreviations();
+            System.out.println("AFTER ABRV: " + value);
+            System.out.println("Hashtags: " + tweet.getHashtags().toString());
+            System.out.println("Mentions: " + tweet.getMentions().toString());
+        //} 
+        this.setVisible(false);
+    }//GEN-LAST:event_btnSendTweetActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSendTweet;
