@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vicennt.logic;
 
 import java.util.ArrayList;
@@ -25,7 +20,9 @@ public abstract class MessageAbbreviation extends Message {
         String msgResult = "";
         for(int i=0; i < msgBodySplited.length; i++){
             if(abbreviationDic.containsKey(msgBodySplited[i])){
-                msgResult += msgBodySplited[i] + " < "+ abbreviationDic.get(msgBodySplited[i]) + "> ";
+                msgResult += msgBodySplited[i] + " <" + abbreviationDic.get(msgBodySplited[i]) + "> ";
+            }else{
+                msgResult += msgBodySplited[i] + " ";
             }
         }
         return msgResult;

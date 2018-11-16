@@ -7,6 +7,7 @@ package com.vicennt.presentation;
 
 import com.vicennt.logic.INapierBankService;
 import com.vicennt.logic.Sms;
+import java.util.Map;
 
 /**
  *
@@ -162,11 +163,14 @@ public class SmsForm extends NapierBankFormBase {
         String id = txtSmsType.getText() + txtSmsId.getText();
         String numPhone = txtSmsPhone.getText();
         String body = txtSmsBody.getText();
-        Sms sms = new Sms(id, numPhone, body, service.getAbbreviations());
-        if(sms.validateMessage()){
-            sms.replaceAbbreviations();
-            service.saveSMS(sms);
-        }           
+        Map <String, String> abbreviations = service.getAbbreviations();
+        Sms sms = new Sms(id, numPhone, body, abbreviations);
+        //if(sms.validateMessage()){
+            System.out.println("MESSAGE BEFORE: " + sms.getMsgBody());
+            String value = sms.replaceAbbreviations();
+            System.out.println("MESSAGE AFTER: " + value);
+        //} 
+        this.setVisible(false);
     }//GEN-LAST:event_btnSendSmsActionPerformed
 
 

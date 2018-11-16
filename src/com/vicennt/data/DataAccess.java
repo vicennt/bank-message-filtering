@@ -1,8 +1,14 @@
 package com.vicennt.data;
 
+import com.sun.javafx.scene.control.skin.Utils;
 import com.vicennt.logic.Message;
+import com.vicennt.logic.Sms;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  *
@@ -10,19 +16,33 @@ import java.util.Map;
  */
 public class DataAccess implements IDataAccess {
 
-    @Override
-    public void writeMessagesToFile(ArrayList<Message> messages) {
-        
-    }
-
-    @Override
-    public ArrayList<Message> readMessagesFromFile() {
-        return null;
-    }
 
     @Override
     public Map<String, String> getAbbreviations() {
-        return null;
+        File file = new File("./iofiles/textwords.csv");
+        Scanner inputStream;
+        Map<String, String> abbreviations = new HashMap<String, String>();
+        try{
+            inputStream = new Scanner(file);
+            String line = ""; 
+            String[] lineSplited;
+            while(inputStream.hasNextLine()){
+                line = inputStream.nextLine();
+                lineSplited = line.split(",");
+                if(lineSplited.length > 2){ // There is comma or commas in value
+                    String merge = "";
+                    for(int i=1; i < lineSplited.length; i++)
+                        merge += lineSplited[i];                       
+                    abbreviations.put(lineSplited[0], merge);
+                }else{
+                    abbreviations.put(lineSplited[0], lineSplited[1]);
+                }
+            }
+
+            return abbreviations;
+        }catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
-    
 }
