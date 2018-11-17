@@ -11,6 +11,7 @@ public interface INapierBankService {
     void addSMS(Sms s);
     void addEmail(Email m);
     void addEmailSir(EmailSIR es);
+    void writeMessagesJSON();
     Map<String, String> getAbbreviations();
     void loadMessages();
 }

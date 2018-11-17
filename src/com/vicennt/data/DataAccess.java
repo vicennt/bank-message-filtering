@@ -45,4 +45,32 @@ public class DataAccess implements IDataAccess {
             return null;
         }
     }
+
+    @Override
+    public void writeMessagesJSON(ArrayList<String> tweets, ArrayList<String> sms, ArrayList<String> emails, ArrayList<String> emailsSIr) {
+         
+    }
+
+    @Override
+    public ArrayList<String> readTweets() {
+        //TODO: Read tweets from JSON
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> readSms() {
+        //TODO: Read sms from JSON
+        return null;    }
+
+    @Override
+    public ArrayList<String> readEmails() {
+        //TODO: Read emails from JSON
+        return null;
+    }
+
+    @Override
+    public ArrayList<String> readEmailsSIR() {
+        //TODO: Read SIR emails from JSON
+        return null;
+    }
 }

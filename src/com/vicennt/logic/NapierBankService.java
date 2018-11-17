@@ -49,11 +49,14 @@ public class NapierBankService implements INapierBankService {
     @Override
     public void loadMessages() {
     }
+    
+     @Override
+    public void writeMessagesJSON() {
+        
+    }
 
     @Override
     public Map<String, String> getAbbreviations() {
         return dal.getAbbreviations();
-    }
-
-    
+    }   
 }
