@@ -134,8 +134,8 @@ public class TweetForm extends NapierBankFormBase {
         String body = txtTweetBody.getText();
         Tweet tweet = new Tweet(id, user, body, service.getAbbreviations());
         if(tweet.validateMessage()){
-            String value = tweet.replaceAbbreviations(); // This variable will be writte into a JSON file
-            Map<String, Integer> map = tweet.getHashtags();
+            tweet.replaceAbbreviations();
+            service.addTweet(tweet);
         } 
         this.setVisible(false);
     }//GEN-LAST:event_btnSendTweetActionPerformed

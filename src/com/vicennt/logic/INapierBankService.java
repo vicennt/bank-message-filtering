@@ -7,11 +7,10 @@ import java.util.Map;
  * @author vicent
  */
 public interface INapierBankService {
-    void addSortCodeSIRList();
-    void addNatureIndidentSIRList();
-    void addHashtagsHTList();
-    void addMentionsMTList();
+    void addTweet(Tweet t);
+    void addSMS(Sms s);
+    void addEmail(Email m);
+    void addEmailSir(EmailSIR es);
     Map<String, String> getAbbreviations();
-    void saveSMS(Sms sms);
     void loadMessages();
 }

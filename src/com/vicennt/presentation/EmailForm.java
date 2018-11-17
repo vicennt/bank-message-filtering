@@ -7,29 +7,37 @@ package com.vicennt.presentation;
 
 import com.vicennt.logic.Email;
 import com.vicennt.logic.INapierBankService;
-import com.vicennt.logic.SignificantIncidentReport;
+import com.vicennt.logic.EmailSIR;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
  * @author vicent
  */
-public class EmailForm extends NapierBankFormBase{
+public class EmailForm extends NapierBankFormBase {
+
+    private boolean comboReady;
 
     /**
      * Creates new form EmailForm
      */
     public EmailForm(INapierBankService service) {
         super(service);
+        comboReady = false;
         initComponents();
         setGUI();
-        
+
     }
-    
-    public void setGUI(){
+
+    public void setGUI() {
         buttonGroup.add(rbtEmailIncident);
         buttonGroup.add(rbtEmailStandard);
         rbtEmailStandard.setSelected(true);
-        txtEmailType.setEditable(false);      
+        txtEmailType.setEditable(false);
+        comboEmailIncident.addItem("-");
         comboEmailIncident.addItem("Theft");
         comboEmailIncident.addItem("Staff Attack");
         comboEmailIncident.addItem("ATM Theft");
@@ -42,6 +50,14 @@ public class EmailForm extends NapierBankFormBase{
         comboEmailIncident.addItem("Intelligence");
         comboEmailIncident.addItem("Cash Loss");
         panelSIR.setVisible(false);
+        comboReady = true;
+    }
+    
+    public void controlSortCode(){
+        if (comboReady) {
+            txtEmailBody.setText("Sort Code:" + txtSorCode1.getText() + "-" + txtSortCode2.getText()
+                    + "-" + txtSortCode3.getText() + "\nNature of Incident:" + comboEmailIncident.getSelectedItem());
+        }
     }
 
     /**
@@ -126,7 +142,31 @@ public class EmailForm extends NapierBankFormBase{
 
         lblEmailIncident.setText("Nature of Incident");
 
+        comboEmailIncident.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboEmailIncidentItemStateChanged(evt);
+            }
+        });
+
         lblSortCode.setText("Sort Code");
+
+        txtSorCode1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSorCode1FocusLost(evt);
+            }
+        });
+
+        txtSortCode2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSortCode2FocusLost(evt);
+            }
+        });
+
+        txtSortCode3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSortCode3FocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelSIRLayout = new javax.swing.GroupLayout(panelSIR);
         panelSIR.setLayout(panelSIRLayout);
@@ -139,19 +179,19 @@ public class EmailForm extends NapierBankFormBase{
             .addGroup(panelSIRLayout.createSequentialGroup()
                 .addGroup(panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelSIRLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(txtSortCode3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
+                        .addComponent(txtSorCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtSortCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtSorCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtSortCode3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelSIRLayout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addComponent(lblSortCode))
                     .addGroup(panelSIRLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(comboEmailIncident, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         panelSIRLayout.setVerticalGroup(
             panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,6 +315,12 @@ public class EmailForm extends NapierBankFormBase{
 
     private void rbtEmailIncidentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtEmailIncidentActionPerformed
         panelSIR.setVisible(true);
+        Date date = Calendar.getInstance().getTime();
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+        String today = formatter.format(date);
+        txtEmailSubject.setText("SIR " + today);
+        txtEmailBody.setText("Sort Code: \nNature of Incident:");
+        txtEmailSubject.setEditable(false);
     }//GEN-LAST:event_rbtEmailIncidentActionPerformed
 
     private void btnSendEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendEmailActionPerformed
@@ -282,29 +328,50 @@ public class EmailForm extends NapierBankFormBase{
         String address = txtEmailAddress.getText();
         String subject = txtEmailSubject.getText();
         String body = txtEmailBody.getText();
-        if(rbtEmailIncident.isSelected()){
-            String sortCode = txtSorCode1.getText() + "-" + 
-                txtSortCode2.getText() + "-" + txtSortCode3.getText();
+        if (rbtEmailIncident.isSelected()) {
+            String sortCode = txtSorCode1.getText() + "-"
+                    + txtSortCode2.getText() + "-" + txtSortCode3.getText();
             String natureIncident = comboEmailIncident.getSelectedItem().toString();
-            SignificantIncidentReport sir = new SignificantIncidentReport(id, address, body,
-            subject, sortCode, natureIncident);    
+            EmailSIR sir = new EmailSIR(id, address, body,
+                    subject, sortCode, natureIncident);
             sir.removeURLS();
-            System.out.println(sir.toString());
-            //TODO: Write this object in JSON file
-        }else{
+            service.addEmailSir(sir);
+        } else {
             Email sem = new Email(id, address, body, subject);
             sem.removeURLS();
-            System.out.println(sem.toString());
-            //TODO: Write this object in JSON file
+            service.addEmail(sem);
         }
-       
+        this.setVisible(false);
+
     }//GEN-LAST:event_btnSendEmailActionPerformed
 
     private void rbtEmailStandardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtEmailStandardActionPerformed
         panelSIR.setVisible(false);
+        txtEmailSubject.setText("");
+        txtEmailSubject.setEditable(true);
+        txtEmailBody.setText("");
     }//GEN-LAST:event_rbtEmailStandardActionPerformed
 
- 
+    private void comboEmailIncidentItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboEmailIncidentItemStateChanged
+        if (comboReady) {
+            txtEmailBody.setText("Sort Code:" + txtSorCode1.getText() + "-" + txtSortCode2.getText()
+                    + "-" + txtSortCode3.getText() + "\nNature of Incident:" + comboEmailIncident.getSelectedItem());
+        }
+    }//GEN-LAST:event_comboEmailIncidentItemStateChanged
+
+    private void txtSorCode1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSorCode1FocusLost
+        controlSortCode();
+    }//GEN-LAST:event_txtSorCode1FocusLost
+
+    private void txtSortCode2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSortCode2FocusLost
+        controlSortCode();
+    }//GEN-LAST:event_txtSortCode2FocusLost
+
+    private void txtSortCode3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSortCode3FocusLost
+        controlSortCode();
+    }//GEN-LAST:event_txtSortCode3FocusLost
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSendEmail;
     private javax.swing.ButtonGroup buttonGroup;

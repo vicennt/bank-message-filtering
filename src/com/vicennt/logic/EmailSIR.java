@@ -9,11 +9,11 @@ package com.vicennt.logic;
  *
  * @author vicent
  */
-public class SignificantIncidentReport extends Email {
+public class EmailSIR extends Email {
     private String sortCode;
     private String natureIncident;
 
-    public SignificantIncidentReport(String msgId, String msgSender, String msgBody,
+    public EmailSIR(String msgId, String msgSender, String msgBody,
             String subject, String sortCode, String natureIncident) {
         super(msgId, msgSender, msgBody, subject);
         this.sortCode = sortCode;

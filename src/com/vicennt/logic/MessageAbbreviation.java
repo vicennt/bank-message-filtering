@@ -18,7 +18,7 @@ public abstract class MessageAbbreviation extends Message {
         this.abbreviationDic = abbreviationDic;
     }
     
-    public String replaceAbbreviations(){
+    public void replaceAbbreviations(){
         String[] msgBodySplited = msgBody.split(" ");
         String msgResult = "";
         for(int i=0; i < msgBodySplited.length; i++){
@@ -28,6 +28,6 @@ public abstract class MessageAbbreviation extends Message {
                 msgResult += msgBodySplited[i] + " ";
             }
         }
-        return msgResult;
+        this.msgBody = msgResult;
     }
 }
