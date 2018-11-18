@@ -63,7 +63,6 @@
                           <Component id="lblTrending" min="-2" pref="388" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                           <Component id="lblMentions" min="-2" pref="305" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">

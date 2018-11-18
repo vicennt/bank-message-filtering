@@ -2,7 +2,6 @@ package com.vicennt.presentation;
 
 import com.vicennt.logic.INapierBankService;
 import com.vicennt.logic.Tweet;
-import java.util.Map;
 
 /**
  *
@@ -12,6 +11,7 @@ public class TweetForm extends NapierBankFormBase {
 
     /**
      * Creates new form TweetForm
+     * @param service
      */
     public TweetForm(INapierBankService service) {
         super(service);

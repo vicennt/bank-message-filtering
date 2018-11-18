@@ -10,6 +10,7 @@ public class ListsForm extends NapierBankFormBase {
 
     /**
      * Creates new form ListsForm
+     * @param service
      */
     public ListsForm(INapierBankService service) {
         super(service);

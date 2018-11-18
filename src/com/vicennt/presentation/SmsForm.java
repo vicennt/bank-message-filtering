@@ -11,6 +11,7 @@ public class SmsForm extends NapierBankFormBase {
 
     /**
      * Creates new form SmsForm
+     * @param service
      */
     public SmsForm(INapierBankService service) {
         super(service);

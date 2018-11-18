@@ -1,16 +1,13 @@
 package com.vicennt.logic;
 
 import com.vicennt.data.DataAccess;
-import com.vicennt.data.IDataAccess;
 import com.vicennt.presentation.InputSessionForm;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  *
  * @author vicent
  */
+
 public class MainClass {
 
     /**
