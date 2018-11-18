@@ -86,7 +86,7 @@ public class NapierBankService implements INapierBankService {
 
     @Override
     public ArrayList<String> calculateTrendings() {
-        ArrayList<String> result = new ArrayList();
+        ArrayList<String> hashList = new ArrayList();
         if (!tweets.isEmpty()) {
             for (int i = 0; i < tweets.size(); i++) {
                 ArrayList<String> hashtags = tweets.get(i).getHashtags();
@@ -99,7 +99,7 @@ public class NapierBankService implements INapierBankService {
                     }
                 }
             }
-            
+
             // Sort hastagMap by value
             Map<String, Integer> hashtagSorted = stadisticsHashtag
                     .entrySet()
@@ -109,23 +109,49 @@ public class NapierBankService implements INapierBankService {
                             toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
                                     LinkedHashMap::new));
             // Create descending sortest String list in order to create trending list
-            for (String key : hashtagSorted.keySet())
-                result.add(key + " ("+ stadisticsHashtag.get(key) + " Tweets)");
+            for (String key : hashtagSorted.keySet()) {
+                hashList.add(key + " (" + stadisticsHashtag.get(key) + " Tweets)");
+            }
 
         } else {
-            result.add("There aren't tweets!");
+            hashList.add("There aren't tweets!");
         }
-        return result;
+                
+        if(hashList.isEmpty()) 
+            hashList.add("There aren't hashtags!");
+        
+        return hashList;
     }
 
     @Override
     public ArrayList<String> getMentionList() {
         ArrayList<String> mentionList = new ArrayList();
-        for(int i = 0; i < tweets.size(); i++){
-            for(int j = 0; j < tweets.get(i).getMentions().size(); j++){
-                mentionList.add(tweets.get(i).getMentions().get(j));
+        if (!tweets.isEmpty()) {
+            for (int i = 0; i < tweets.size(); i++) {
+                for (int j = 0; j < tweets.get(i).getMentions().size(); j++) {
+                    mentionList.add(tweets.get(i).getMentions().get(j));
+                }
             }
+        } else {
+            mentionList.add("There aren't tweets!");
         }
+                
+        if(mentionList.isEmpty()) 
+            mentionList.add("There aren't mentions!");
         return mentionList;
+    }
+
+    @Override
+    public ArrayList<String> getSIRList() {
+        ArrayList<String> sirList = new ArrayList();
+        if (!sirEmails.isEmpty()) {
+            for (int i = 0; i < this.sirEmails.size(); i++) {
+                sirList.add(sirEmails.get(i).getSortCode() + " ("
+                        + sirEmails.get(i).getNatureIncident() + ")");
+            }
+        }else{
+            sirList.add("There aren't SIR emails!");
+        }
+        return sirList;
     }
 }

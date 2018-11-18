@@ -17,6 +17,7 @@ public class ListsForm extends NapierBankFormBase {
         initComponents();
         showTrending();
         showMentions();
+        showSIR();
     }
     
     private void showTrending(){
@@ -37,6 +38,18 @@ public class ListsForm extends NapierBankFormBase {
         lblMentions.setText(aux);      
     }
     
+    private void showSIR(){
+        String aux = "<html>";
+        for(String s : service.getSIRList()){
+            aux += s + "<br/>";
+        }
+        aux += "</html>";
+        lblSIRList.setText(aux); 
+        
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,8 +67,6 @@ public class ListsForm extends NapierBankFormBase {
         lblTrending = new javax.swing.JLabel();
         lblMentions = new javax.swing.JLabel();
         lblSIRList = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblStadisticsTitle.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
         lblStadisticsTitle.setText("Final stadistics");
@@ -75,6 +86,7 @@ public class ListsForm extends NapierBankFormBase {
         lblMentions.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         lblMentions.setText("-");
 
+        lblSIRList.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         lblSIRList.setText("-");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -97,12 +109,11 @@ public class ListsForm extends NapierBankFormBase {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(235, 235, 235)
-                        .addComponent(lblTitleSIRList)
-                        .addGap(166, 166, 166))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSIRList, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))))
+                        .addComponent(lblTitleSIRList))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(lblSIRList, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

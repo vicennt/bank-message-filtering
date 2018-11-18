@@ -14,6 +14,7 @@ public interface INapierBankService {
     void addEmailSir(EmailSIR es);
     ArrayList<String> calculateTrendings();
     ArrayList<String> getMentionList();
+    ArrayList<String> getSIRList();
     ArrayList<Tweet> getTweets();
     ArrayList<Sms> getSms();
     ArrayList<Email> getEmails();
