@@ -2,7 +2,6 @@ package com.vicennt.presentation;
 
 import com.vicennt.logic.INapierBankService;
 
-
 /**
  *
  * @author vicent
@@ -102,6 +101,11 @@ public class InputSessionForm extends NapierBankFormBase {
         );
 
         btnEndSession.setText("End current session");
+        btnEndSession.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEndSessionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -185,6 +189,11 @@ public class InputSessionForm extends NapierBankFormBase {
         tweetForm.setLocationRelativeTo(null);
         tweetForm.setVisible(true);
     }//GEN-LAST:event_btnTweetActionPerformed
+
+    private void btnEndSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndSessionActionPerformed
+        ListsForm lf = new ListsForm(service);
+        lf.setVisible(true);
+    }//GEN-LAST:event_btnEndSessionActionPerformed
 
 
 

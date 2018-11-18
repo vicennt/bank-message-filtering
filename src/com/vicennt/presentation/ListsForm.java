@@ -14,8 +14,18 @@ public class ListsForm extends NapierBankFormBase {
     public ListsForm(INapierBankService service) {
         super(service);
         initComponents();
+        showTrending();
     }
-
+    
+    private void showTrending(){
+        String aux = "<html>";
+        for(String s : service.calculateTrendings()){
+            aux += s + "<br/>";
+        }
+        aux += "</html>";
+        lblTrending.setText(aux);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -25,17 +35,98 @@ public class ListsForm extends NapierBankFormBase {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        lblStadisticsTitle = new javax.swing.JLabel();
+        lblTitleTrending = new javax.swing.JLabel();
+        lblTitleMention = new javax.swing.JLabel();
+        lblTitleSIRList = new javax.swing.JLabel();
+        lblTrending = new javax.swing.JLabel();
+        lblMentions = new javax.swing.JLabel();
+        lblSIRList = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblStadisticsTitle.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        lblStadisticsTitle.setText("Final stadistics");
+
+        lblTitleTrending.setFont(new java.awt.Font("Ubuntu", 1, 29)); // NOI18N
+        lblTitleTrending.setText("Trending List");
+
+        lblTitleMention.setFont(new java.awt.Font("Ubuntu", 1, 29)); // NOI18N
+        lblTitleMention.setText("Mention List");
+
+        lblTitleSIRList.setFont(new java.awt.Font("Ubuntu", 1, 29)); // NOI18N
+        lblTitleSIRList.setText("SIR List");
+
+        lblTrending.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        lblTrending.setText("-");
+
+        lblMentions.setText("-");
+
+        lblSIRList.setText("-");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblStadisticsTitle)
+                .addGap(520, 520, 520))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(lblTitleTrending)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
+                        .addComponent(lblTitleMention)
+                        .addGap(215, 215, 215))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(lblTrending, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93)
+                        .addComponent(lblMentions, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(lblTitleSIRList)
+                        .addGap(166, 166, 166))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblSIRList, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(lblStadisticsTitle)
+                .addGap(84, 84, 84)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitleTrending)
+                    .addComponent(lblTitleMention)
+                    .addComponent(lblTitleSIRList))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTrending)
+                    .addComponent(lblMentions)
+                    .addComponent(lblSIRList))
+                .addContainerGap(518, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -44,5 +135,13 @@ public class ListsForm extends NapierBankFormBase {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblMentions;
+    private javax.swing.JLabel lblSIRList;
+    private javax.swing.JLabel lblStadisticsTitle;
+    private javax.swing.JLabel lblTitleMention;
+    private javax.swing.JLabel lblTitleSIRList;
+    private javax.swing.JLabel lblTitleTrending;
+    private javax.swing.JLabel lblTrending;
     // End of variables declaration//GEN-END:variables
 }

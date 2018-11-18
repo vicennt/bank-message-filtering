@@ -1,20 +1,21 @@
 package com.vicennt.logic;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
+
 /**
  *
  * @author vicent
  */
+
 public class Tweet extends MessageAbbreviation {
     
-    Map<String, Integer> hashtags;
+    ArrayList<String> hashtags;
     ArrayList<String> mentions;
 
     public Tweet(String msgId, String msgSender, String msgBody, Map<String, String> abbreviationDic) {
         super(msgId, msgSender, msgBody, abbreviationDic);
-        hashtags = new HashMap<>();
+        hashtags = new ArrayList<>();
         mentions = new ArrayList<>();
     }
 
@@ -23,15 +24,13 @@ public class Tweet extends MessageAbbreviation {
         return true;
     }
     
-    public Map<String, Integer> getHashtags(){
+    public ArrayList<String> getHashtags(){
         String[] wordsTweet = msgBody.split(" ");
         for(int i = 0; i < wordsTweet.length; i++){
             if(wordsTweet[i].charAt(0) == '#'){
-                if(hashtags.containsKey(wordsTweet[i])){
-                    Integer count = hashtags.get(wordsTweet[i]);
-                    hashtags.put(wordsTweet[i], ++count);
-                }else{
-                    hashtags.put(wordsTweet[i], 1); 
+                // Only one appearance in each tweet
+                if(!hashtags.contains(wordsTweet[i])){
+                    hashtags.add(wordsTweet[i]);
                 }
             }
         }
