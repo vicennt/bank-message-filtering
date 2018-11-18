@@ -13,6 +13,7 @@ public interface INapierBankService {
     void addEmail(Email m);
     void addEmailSir(EmailSIR es);
     ArrayList<String> calculateTrendings();
+    ArrayList<String> getMentionList();
     ArrayList<Tweet> getTweets();
     ArrayList<Sms> getSms();
     ArrayList<Email> getEmails();

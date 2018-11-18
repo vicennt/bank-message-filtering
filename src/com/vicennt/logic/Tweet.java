@@ -41,7 +41,10 @@ public class Tweet extends MessageAbbreviation {
         String[] wordsTweet = msgBody.split(" ");
         for(int i = 0; i < wordsTweet.length; i++){
             if(wordsTweet[i].charAt(0) == '@'){
-                mentions.add(wordsTweet[i]);
+                // Only one appearance in each tweet
+                if(!mentions.contains(wordsTweet[i])){
+                    mentions.add(wordsTweet[i]);
+                }
             }
         }
         return this.mentions;

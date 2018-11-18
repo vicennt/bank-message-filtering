@@ -117,4 +117,15 @@ public class NapierBankService implements INapierBankService {
         }
         return result;
     }
+
+    @Override
+    public ArrayList<String> getMentionList() {
+        ArrayList<String> mentionList = new ArrayList();
+        for(int i = 0; i < tweets.size(); i++){
+            for(int j = 0; j < tweets.get(i).getMentions().size(); j++){
+                mentionList.add(tweets.get(i).getMentions().get(j));
+            }
+        }
+        return mentionList;
+    }
 }

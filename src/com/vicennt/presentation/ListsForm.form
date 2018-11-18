@@ -50,30 +50,26 @@
                   <EmptySpace min="-2" pref="520" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                          <Component id="lblTitleTrending" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="287" max="32767" attributes="0"/>
-                          <Component id="lblTitleMention" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                          <Component id="lblTrending" min="-2" pref="388" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                          <Component id="lblMentions" min="-2" pref="305" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblTitleTrending" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblTrending" min="-2" pref="388" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="80" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblTitleMention" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMentions" min="-2" pref="222" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
                           <Component id="lblTitleSIRList" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblSIRList" min="-2" pref="272" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -144,6 +140,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblMentions">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Ubuntu" size="24" style="0"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
         </Component>
