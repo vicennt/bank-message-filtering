@@ -13,6 +13,7 @@ public class TweetForm extends NapierBankFormBase {
      * Creates new form TweetForm
      * @param service
      */
+    
     public TweetForm(INapierBankService service) {
         super(service);
         initComponents();

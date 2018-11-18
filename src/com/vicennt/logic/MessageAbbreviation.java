@@ -1,5 +1,6 @@
 package com.vicennt.logic;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Map;
  * @author vicent
  */
 
-public abstract class MessageAbbreviation extends Message {
+public abstract class MessageAbbreviation extends Message implements Serializable {
     
     private Map<String, String> abbreviationDic; 
     
@@ -17,11 +18,15 @@ public abstract class MessageAbbreviation extends Message {
         this.abbreviationDic = abbreviationDic;
     }
     
+    public MessageAbbreviation(String msgId, String msgSender, String msgBody){
+        super(msgId, msgSender, msgBody);
+    }
+    
     public void replaceAbbreviations(){
         String[] msgBodySplited = msgBody.split(" ");
         String msgResult = "";
         for(int i=0; i < msgBodySplited.length; i++){
-            if(abbreviationDic.containsKey(msgBodySplited[i])){
+            if(msgBodySplited[i].length() > 0 && abbreviationDic.containsKey(msgBodySplited[i])){
                 msgResult += msgBodySplited[i] + " <" + abbreviationDic.get(msgBodySplited[i]) + "> ";
             }else{
                 msgResult += msgBodySplited[i] + " ";

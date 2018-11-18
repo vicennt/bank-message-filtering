@@ -1,5 +1,6 @@
 package com.vicennt.logic;
 
+
 /**
  *
  * @author vicent
@@ -38,6 +39,13 @@ public abstract class Message {
 
     public void setMsgBody(String msgBody) {
         this.msgBody = msgBody;
+    }
+    
+    @Override
+    public String toString() {
+        return "[ID: " + this.msgId + "] \n" +
+               "[Sender: " + this.msgSender  + "] \n" +
+               "[Body: " + this.msgBody + "]";
     }
     
 }

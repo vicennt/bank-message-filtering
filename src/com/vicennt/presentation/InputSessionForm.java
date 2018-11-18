@@ -1,6 +1,12 @@
 package com.vicennt.presentation;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vicennt.logic.INapierBankService;
+import com.vicennt.logic.Tweet;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -139,6 +145,11 @@ public class InputSessionForm extends NapierBankFormBase {
         menuFile.setText("File");
 
         menuItemOpenFile.setText("Load messages from file");
+        menuItemOpenFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemOpenFileActionPerformed(evt);
+            }
+        });
         menuFile.add(menuItemOpenFile);
 
         menuItemShowLists.setText("End input session");
@@ -194,6 +205,17 @@ public class InputSessionForm extends NapierBankFormBase {
         ListsForm lf = new ListsForm(service);
         lf.setVisible(true);
     }//GEN-LAST:event_btnEndSessionActionPerformed
+
+    private void menuItemOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemOpenFileActionPerformed
+        ObjectMapper om = new ObjectMapper();
+        try {
+            File file = new File("./iofiles/result.json");
+            Tweet t = om.readValue(file, Tweet.class);
+            System.out.println(t.toString());
+        } catch (IOException ex) {
+            Logger.getLogger(InputSessionForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemOpenFileActionPerformed
 
 
 
