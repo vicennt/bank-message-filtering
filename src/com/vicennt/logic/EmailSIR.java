@@ -39,6 +39,15 @@ public class EmailSIR extends Email {
     }
 
     @Override
+    public boolean validateMessage() {
+        return super.validateMessage() && sortCode != null && 
+                natureIncident != null;
+    }
+    
+    
+    
+
+    @Override
     public String toString() {
         return "[ID: " + this.msgId + "] \n"
                 + "[Address: " + this.msgSender + "] \n"

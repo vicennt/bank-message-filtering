@@ -18,6 +18,7 @@ public class ListsForm extends NapierBankFormBase {
         showTrending();
         showMentions();
         showSIR();
+        showNumMessages();
     }
     
     private void showTrending(){
@@ -48,6 +49,11 @@ public class ListsForm extends NapierBankFormBase {
         
     }
     
+    private void showNumMessages(){
+        lblNumMessages.setText("Num of messages processed: " + 
+                service.getNumberOfMessages());
+    }
+    
     
     
     /**
@@ -67,6 +73,7 @@ public class ListsForm extends NapierBankFormBase {
         lblTrending = new javax.swing.JLabel();
         lblMentions = new javax.swing.JLabel();
         lblSIRList = new javax.swing.JLabel();
+        lblNumMessages = new javax.swing.JLabel();
 
         lblStadisticsTitle.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
         lblStadisticsTitle.setText("Final stadistics");
@@ -89,31 +96,44 @@ public class ListsForm extends NapierBankFormBase {
         lblSIRList.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         lblSIRList.setText("-");
 
+        lblNumMessages.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        lblNumMessages.setText("-");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblStadisticsTitle)
-                .addGap(520, 520, 520))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTitleTrending)
                     .addComponent(lblTrending, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitleMention)
-                    .addComponent(lblMentions, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(235, 235, 235)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                        .addComponent(lblTitleMention)
+                        .addGap(109, 109, 109))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(lblMentions, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
                         .addComponent(lblTitleSIRList))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(45, 45, 45)
                         .addComponent(lblSIRList, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblStadisticsTitle)
+                        .addGap(520, 520, 520))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblNumMessages, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(451, 451, 451))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +150,9 @@ public class ListsForm extends NapierBankFormBase {
                     .addComponent(lblTrending)
                     .addComponent(lblMentions)
                     .addComponent(lblSIRList))
-                .addContainerGap(518, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 448, Short.MAX_VALUE)
+                .addComponent(lblNumMessages)
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -156,6 +178,7 @@ public class ListsForm extends NapierBankFormBase {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblMentions;
+    private javax.swing.JLabel lblNumMessages;
     private javax.swing.JLabel lblSIRList;
     private javax.swing.JLabel lblStadisticsTitle;
     private javax.swing.JLabel lblTitleMention;

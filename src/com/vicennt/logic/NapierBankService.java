@@ -76,7 +76,7 @@ public class NapierBankService implements INapierBankService {
 
     @Override
     public void writeMessagesJSON() {
-
+        dal.writeMessagesJSON(tweets, sms, emails, sirEmails);
     }
 
     @Override
@@ -153,5 +153,10 @@ public class NapierBankService implements INapierBankService {
             sirList.add("There aren't SIR emails!");
         }
         return sirList;
+    }
+
+    @Override
+    public int getNumberOfMessages() {
+        return tweets.size() + sms.size() + emails.size() + sirEmails.size();
     }
 }

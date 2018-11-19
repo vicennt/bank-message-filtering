@@ -40,8 +40,16 @@ public class Tweet extends MessageAbbreviation {
 
     @Override
     public boolean validateMessage() {
-        return true;
+        if(this.msgId != null && this.msgSender != null && this.msgBody != null &&
+                this.msgSender.length() < 15 && this.msgBody.length() < 140){
+            return true;
+        }else{
+            return false;
+        }
     }
+        
+    
+    
 
     public ArrayList<String> getHashtags() {
         String[] wordsTweet = msgBody.split(" ");     

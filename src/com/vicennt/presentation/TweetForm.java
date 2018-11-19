@@ -2,6 +2,8 @@ package com.vicennt.presentation;
 
 import com.vicennt.logic.INapierBankService;
 import com.vicennt.logic.Tweet;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -137,8 +139,12 @@ public class TweetForm extends NapierBankFormBase {
         if(tweet.validateMessage()){
             tweet.replaceAbbreviations();
             service.addTweet(tweet);
-        } 
-        this.setVisible(false);
+            this.setVisible(false);
+
+        }else{
+            JOptionPane.showMessageDialog(new JFrame(), "You have errors in your form, please check it", "Email format error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnSendTweetActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

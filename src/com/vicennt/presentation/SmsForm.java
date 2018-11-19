@@ -2,6 +2,8 @@ package com.vicennt.presentation;
 
 import com.vicennt.logic.INapierBankService;
 import com.vicennt.logic.Sms;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -163,8 +165,11 @@ public class SmsForm extends NapierBankFormBase {
         if(sms.validateMessage()){
             sms.replaceAbbreviations();
             service.addSMS(sms);
-        } 
-        this.setVisible(false);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(new JFrame(), "You have errors in your form, please check it", "Email format error",
+                    JOptionPane.ERROR_MESSAGE);               
+        }      
     }//GEN-LAST:event_btnSendSmsActionPerformed
 
 

@@ -28,7 +28,8 @@ public class Sms extends MessageAbbreviation {
         String regex = "^\\+[0-9]{1,3}\\.[0-9]{4,14}(?:x.+)?$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(msgSender);
-        return matcher.matches() && msgBody.length() <= 140;
+        return msgId != null && msgSender !=null && msgBody != null &&
+                matcher.matches() && msgBody.length() <= 140;
     }
 
 }

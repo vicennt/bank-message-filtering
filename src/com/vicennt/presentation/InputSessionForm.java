@@ -19,6 +19,13 @@ public class InputSessionForm extends NapierBankFormBase {
         super(service);
         initComponents();
     }
+    
+    private void closeSession(){
+        ListsForm lf = new ListsForm(service);
+        service.writeMessagesJSON();
+        lf.setLocationRelativeTo(null);
+        lf.setVisible(true);
+    }
 
     
     @SuppressWarnings("unchecked")
@@ -39,6 +46,14 @@ public class InputSessionForm extends NapierBankFormBase {
         menuItemShowLists = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         lblSendMsg.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
         lblSendMsg.setText("Welcome, you are in an Input Session");
@@ -106,7 +121,7 @@ public class InputSessionForm extends NapierBankFormBase {
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
-        btnEndSession.setText("End current session");
+        btnEndSession.setText("Close current session");
         btnEndSession.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEndSessionActionPerformed(evt);
@@ -152,7 +167,12 @@ public class InputSessionForm extends NapierBankFormBase {
         });
         menuFile.add(menuItemOpenFile);
 
-        menuItemShowLists.setText("End input session");
+        menuItemShowLists.setText("Close current session");
+        menuItemShowLists.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemShowListsActionPerformed(evt);
+            }
+        });
         menuFile.add(menuItemShowLists);
 
         mainMenu.add(menuFile);
@@ -202,8 +222,7 @@ public class InputSessionForm extends NapierBankFormBase {
     }//GEN-LAST:event_btnTweetActionPerformed
 
     private void btnEndSessionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndSessionActionPerformed
-        ListsForm lf = new ListsForm(service);
-        lf.setVisible(true);
+        closeSession();
     }//GEN-LAST:event_btnEndSessionActionPerformed
 
     private void menuItemOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemOpenFileActionPerformed
@@ -216,6 +235,18 @@ public class InputSessionForm extends NapierBankFormBase {
             Logger.getLogger(InputSessionForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemOpenFileActionPerformed
+
+    private void menuItemShowListsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemShowListsActionPerformed
+        closeSession();
+    }//GEN-LAST:event_menuItemShowListsActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+  
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+    }//GEN-LAST:event_formWindowClosing
 
 
 

@@ -12,6 +12,7 @@ public interface INapierBankService {
     void addSMS(Sms s);
     void addEmail(Email m);
     void addEmailSir(EmailSIR es);
+    int getNumberOfMessages();
     ArrayList<String> calculateTrendings();
     ArrayList<String> getMentionList();
     ArrayList<String> getSIRList();

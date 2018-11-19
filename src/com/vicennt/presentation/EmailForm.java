@@ -7,6 +7,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +20,7 @@ public class EmailForm extends NapierBankFormBase {
 
     /**
      * Creates new form EmailForm
+     *
      * @param service
      */
     public EmailForm(INapierBankService service) {
@@ -48,8 +51,8 @@ public class EmailForm extends NapierBankFormBase {
         panelSIR.setVisible(false);
         comboReady = true;
     }
-    
-    public void controlSortCode(){
+
+    public void controlSortCode() {
         if (comboReady) {
             txtEmailBody.setText("Sort Code:" + txtSorCode1.getText() + "-" + txtSortCode2.getText()
                     + "-" + txtSortCode3.getText() + "\nNature of Incident:" + comboEmailIncident.getSelectedItem());
@@ -324,21 +327,33 @@ public class EmailForm extends NapierBankFormBase {
         String address = txtEmailAddress.getText();
         String subject = txtEmailSubject.getText();
         String body = txtEmailBody.getText();
+        boolean errorForm = true;
         if (rbtEmailIncident.isSelected()) {
             String sortCode = txtSorCode1.getText() + "-"
                     + txtSortCode2.getText() + "-" + txtSortCode3.getText();
             String natureIncident = comboEmailIncident.getSelectedItem().toString();
             EmailSIR sir = new EmailSIR(id, address, body,
                     subject, sortCode, natureIncident);
-            sir.removeURLS();
-            service.addEmailSir(sir);
+            if (sir.validateMessage()) {
+                errorForm = false;
+                sir.removeURLS();
+                service.addEmailSir(sir);
+            }
         } else {
             Email sem = new Email(id, address, body, subject);
-            sem.removeURLS();
-            service.addEmail(sem);
+            if (sem.validateMessage()) {
+                errorForm = false;
+                sem.removeURLS();
+                service.addEmail(sem);
+            }
         }
-        this.setVisible(false);
 
+        if (errorForm) {
+            JOptionPane.showMessageDialog(new JFrame(), "You have errors in your form, please check it", "Email format error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else {
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnSendEmailActionPerformed
 
     private void rbtEmailStandardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtEmailStandardActionPerformed

@@ -2,6 +2,7 @@ package com.vicennt.logic;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -46,8 +47,21 @@ public class Email extends Message {
     }
 
     @Override
-    public boolean validateMessage() {
-        return true;
+    public boolean validateMessage() {      
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                            "[a-zA-Z0-9_+&*-]+)*@" + 
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                            "A-Z]{2,7}$"; 
+                              
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (this.msgSender != null  && this.msgId != null &&
+                this.msgBody != null && subject != null &&
+                pat.matcher(this.msgSender).matches() &&
+                subject.length() < 20 && this.msgBody.length() < 1028){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public ArrayList<String> getQuarantineList() {
