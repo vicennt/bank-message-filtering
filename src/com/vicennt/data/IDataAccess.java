@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- *
- * @author vicent
+ * Interface with the methods that are going to access to the data 
+ * @author vicent 
  */
 
 public interface IDataAccess {
-    // All operation with data
     Map<String, String> getAbbreviations();
     ArrayList<Tweet> readTweets(String filename);
     ArrayList<Sms> readSms(String filename);

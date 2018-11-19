@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- *
+ * Interface for the logical layer
  * @author vicent
  */
 public interface INapierBankService {    

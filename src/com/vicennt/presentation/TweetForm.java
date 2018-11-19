@@ -137,6 +137,7 @@ public class TweetForm extends NapierBankFormBase {
         String body = txtTweetBody.getText();
         Tweet tweet = new Tweet(id, user, body, service.getAbbreviations());
         if(tweet.validateMessage()){
+            // First replace the abbreviations
             tweet.replaceAbbreviations();
             service.addTweet(tweet);
             this.setVisible(false);

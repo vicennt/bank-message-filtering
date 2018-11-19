@@ -9,7 +9,7 @@ import com.vicennt.logic.INapierBankService;
 import java.util.ArrayList;
 
 /**
- *
+ * This form shows each message readed
  * @author vicent
  */
 public class ReadMessages extends NapierBankFormBase {

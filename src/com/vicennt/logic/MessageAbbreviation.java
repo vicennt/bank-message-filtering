@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.Map;
 
 /**
- *
+ * This class represent an Message with abbreviations
  * @author vicent
  */
 
-public abstract class MessageAbbreviation extends Message implements Serializable {
+public abstract class MessageAbbreviation extends Message {
     
     private Map<String, String> abbreviationDic; 
     
@@ -22,6 +22,10 @@ public abstract class MessageAbbreviation extends Message implements Serializabl
         super(msgId, msgSender, msgBody);
     }
     
+    /**
+     * This method go through the body of message and replace the abbreviation 
+     * to the full text
+     */  
     public void replaceAbbreviations(){
         String[] msgBodySplited = msgBody.split(" ");
         String msgResult = "";

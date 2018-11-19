@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- *
+ * This class represent a Tweet object
  * @author vicent
  */
 
@@ -28,6 +28,7 @@ public class Tweet extends MessageAbbreviation {
         getMentions();
     }
 
+    // This constructor is prepared to create objects from JSON file
     public Tweet(@JsonProperty(value = "msgId", access = JsonProperty.Access.READ_WRITE) String msgId,
             @JsonProperty(value = "msgSender", access = JsonProperty.Access.READ_WRITE) String msgSender,
             @JsonProperty(value = "msgBody", access = JsonProperty.Access.READ_WRITE) String msgBody,
@@ -43,6 +44,10 @@ public class Tweet extends MessageAbbreviation {
         }
     }
 
+    /**
+     * This method check if the Email is well formed
+     * @return true if it is an valid tweet
+     */
     @Override
     public boolean validateMessage() {
         if (this.msgId != null && this.msgSender != null && this.msgBody != null
@@ -52,7 +57,12 @@ public class Tweet extends MessageAbbreviation {
             return false;
         }
     }
-
+    
+    /**
+    * This method go through msgBody and get all hashtags. Then put each one in 
+    * a ArrayList
+    * @return ArrayList with all hashtags
+    */
     public ArrayList<String> getHashtags() {
         String[] wordsTweet = msgBody.split(" ");
         for (int i = 0; i < wordsTweet.length; i++) {
@@ -65,7 +75,12 @@ public class Tweet extends MessageAbbreviation {
         }
         return this.hashtags;
     }
-
+    
+    /**
+    * This method go through msgBody and get all mentions. Then put each one in 
+    * a ArrayList
+    * @return ArrayList with all mentions
+    */
     public ArrayList<String> getMentions() {
         String[] wordsTweet = msgBody.split(" ");
         for (int i = 0; i < wordsTweet.length; i++) {

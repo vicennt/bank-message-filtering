@@ -328,6 +328,7 @@ public class EmailForm extends NapierBankFormBase {
         String subject = txtEmailSubject.getText();
         String body = txtEmailBody.getText();
         boolean errorForm = true;
+        // Check if is a standar email or SIR
         if (rbtEmailIncident.isSelected()) {
             String sortCode = txtSorCode1.getText() + "-"
                     + txtSortCode2.getText() + "-" + txtSortCode3.getText();
@@ -348,6 +349,7 @@ public class EmailForm extends NapierBankFormBase {
             }
         }
 
+        // Show a dialog if the message is wrong formed
         if (errorForm) {
             JOptionPane.showMessageDialog(new JFrame(), "You have errors in your form, please check it", "Email format error",
                     JOptionPane.ERROR_MESSAGE);

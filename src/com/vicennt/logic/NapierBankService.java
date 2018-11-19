@@ -9,7 +9,7 @@ import java.util.Map;
 import static java.util.stream.Collectors.toMap;
 
 /**
- *
+ * Implementation of INapierBankService interface
  * @author vicent
  */
 
@@ -76,18 +76,25 @@ public class NapierBankService implements INapierBankService {
     public Map<String, String> getAbbreviations() {
         return dal.getAbbreviations();
     }
-
+    
+    /**
+     * This method get all the hashtags from the tweets and
+     * count how many appearances of each there are
+     * @return list an ordered list 
+     */
     @Override
     public ArrayList<String> calculateTrendings() {
         ArrayList<String> hashList = new ArrayList();
         if (!tweets.isEmpty()) {
+            // Get all hashtags and put in a Map with the number of appearances
             for (int i = 0; i < tweets.size(); i++) {
                 ArrayList<String> hashtags = tweets.get(i).getHashtags();
                 for (int j = 0; j < hashtags.size(); j++) {
+                    // If the hashtag exist in the map the counter is incrementd
                     if (stadisticsHashtag.containsKey(hashtags.get(j))) {
                         Integer count = stadisticsHashtag.get(hashtags.get(j));
                         stadisticsHashtag.put(hashtags.get(j), ++count);
-                    } else {
+                    } else { // If not, counter = 1
                         stadisticsHashtag.put(hashtags.get(j), 1);
                     }
                 }
@@ -115,6 +122,11 @@ public class NapierBankService implements INapierBankService {
         
         return hashList;
     }
+    
+    /**
+     * This method go through all tweets and get the mentions
+     * @return list with all mentions
+     */
 
     @Override
     public ArrayList<String> getMentionList() {
@@ -148,6 +160,10 @@ public class NapierBankService implements INapierBankService {
         return sirList;
     }
 
+    /**
+     * 
+     * @return number of messages in the system
+     */
     @Override
     public int getNumberOfMessages() {
         return tweets.size() + sms.size() + emails.size() + sirEmails.size();

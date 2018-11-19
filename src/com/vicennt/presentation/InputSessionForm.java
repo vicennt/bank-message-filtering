@@ -20,6 +20,11 @@ public class InputSessionForm extends NapierBankFormBase {
         super(service);
         initComponents();
     }
+   
+    /**
+     * This method get all the information from the current session
+     * and pass it to logical layer
+     */
 
     private void closeSession() {
         ListsForm lf = new ListsForm(service);

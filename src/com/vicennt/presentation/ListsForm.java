@@ -21,6 +21,8 @@ public class ListsForm extends NapierBankFormBase {
         showNumMessages();
     }
     
+    // This methods show each list in the determined label
+    
     private void showTrending(){
         String aux = "<html>";
         for(String s : service.calculateTrendings()){

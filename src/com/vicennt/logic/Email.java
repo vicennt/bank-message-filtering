@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 /**
- *
+ * This class represent an Email object
  * @author vicent
+ * 
  */
 public class Email extends Message {
 
     protected ArrayList<String> quarantineList;
     protected String subject;
 
+    // This constructor is prepared to create objects from JSON file
     public Email(@JsonProperty(value = "msgId", access = JsonProperty.Access.READ_WRITE) String msgId,
             @JsonProperty(value = "msgSender", access = JsonProperty.Access.READ_WRITE) String msgSender,
             @JsonProperty(value = "msgBody", access = JsonProperty.Access.READ_WRITE) String msgBody,
@@ -31,6 +33,11 @@ public class Email extends Message {
         this.subject = subject;
     }
 
+    /**
+     * 
+     * This method go through the msgBody and replace all the URL's
+     * to <URL Quarantined>. The URL is saved in a quarantine list.
+     */
     public void removeURLS() {
         String[] msgBodySplited = msgBody.split(" ");
         String msgResult = "";
@@ -46,6 +53,10 @@ public class Email extends Message {
         this.msgBody = msgResult;
     }
 
+    /**
+     * This method check if the Email is well formed
+     * @return true if it is an valid email
+     */
     @Override
     public boolean validateMessage() {      
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 

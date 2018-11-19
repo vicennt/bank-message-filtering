@@ -163,6 +163,7 @@ public class SmsForm extends NapierBankFormBase {
         String body = txtSmsBody.getText();
         Sms sms = new Sms(id, numPhone, body, service.getAbbreviations());
         if(sms.validateMessage()){
+            // First replace the abbreviations
             sms.replaceAbbreviations();
             service.addSMS(sms);
             this.setVisible(false);

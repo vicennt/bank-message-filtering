@@ -22,11 +22,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Implementation of IDataAccess interface
  * @author vicent
+ * 
  */
 public class DataAccess implements IDataAccess {
-
+    
+    
+    /**
+    * This method reads a CSV file with some abbreviations and creates a Map 
+    * with the relationship between acronyms and the full text
+    * @return Map with the relation between acronyms and full text
+    */
     @Override
     public Map<String, String> getAbbreviations() {
         File file = new File(Constants.PATH_TO_ABBREVIATION);
@@ -39,7 +46,8 @@ public class DataAccess implements IDataAccess {
             while (inputStream.hasNextLine()) {
                 line = inputStream.nextLine();
                 lineSplited = line.split(",");
-                if (lineSplited.length > 2) { // There is comma or commas in value
+                // Control if the full text has commas
+                if (lineSplited.length > 2) { // 
                     String merge = "";
                     for (int i = 1; i < lineSplited.length; i++) {
                         merge += lineSplited[i];
@@ -57,6 +65,11 @@ public class DataAccess implements IDataAccess {
         }
     }
 
+    /**
+    * This method reads tweets from JSON file 
+    * and convert them to an ArrayList with Tweet objects
+    * @param filename name of the file
+    */
     @Override
     public ArrayList<Tweet> readTweets(String filename) {
         try {
@@ -68,7 +81,12 @@ public class DataAccess implements IDataAccess {
             return null;
         }
     }
-
+    
+    /**
+    * This method reads sms from JSON file 
+    * and convert them to an ArrayList with SMS objects
+    * @param filename name of the file
+    */
     @Override
     public ArrayList<Sms> readSms(String filename) {
         try {
@@ -80,7 +98,12 @@ public class DataAccess implements IDataAccess {
             return null;
         }
     }
-
+    
+    /**
+    * This method reads emails from JSON file 
+    * and convert them to an ArrayList with Email objects
+    * @param filename name of the file
+    */
     @Override
     public ArrayList<Email> readEmails(String filename) {
         try {
@@ -93,6 +116,11 @@ public class DataAccess implements IDataAccess {
         }
     }
 
+    /**
+    * This method reads SIR emails from JSON file 
+    * and convert them to an ArrayList with EmailSIR objects
+    * @param filename name of the file
+    */
     @Override
     public ArrayList<EmailSIR> readEmailsSIR(String filename) {
         try {
@@ -104,6 +132,12 @@ public class DataAccess implements IDataAccess {
             return null;
         }
     }
+    
+    /**
+    * This method write objects in a specific file
+    * @param t This array list contains objects that are going to write in a file
+    * @param filename path of the file
+    */
 
     @Override
     public void writeMessages(ArrayList t, String filename) {
@@ -111,6 +145,7 @@ public class DataAccess implements IDataAccess {
         try {
             Date date = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyy_HH:mm:ss");
+            // Create a filename with current date and hour
             File file = new File(filename + dateFormat.format(date) + ".json");
             fileWriter = new FileWriter(file);
             ObjectMapper mapper = new ObjectMapper();

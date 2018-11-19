@@ -2,7 +2,7 @@ package com.vicennt.logic;
 
 
 /**
- *
+ * This class represent a Message object
  * @author vicent
  */
 public abstract class Message {
