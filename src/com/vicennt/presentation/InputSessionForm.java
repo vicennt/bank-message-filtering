@@ -1,13 +1,8 @@
 package com.vicennt.presentation;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vicennt.constants.Constants;
 import com.vicennt.logic.INapierBankService;
-import com.vicennt.logic.Tweet;
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 /**
@@ -43,7 +38,10 @@ public class InputSessionForm extends NapierBankFormBase {
         btnEndSession = new javax.swing.JButton();
         mainMenu = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
-        menuItemOpenFile = new javax.swing.JMenuItem();
+        menuItemTweet = new javax.swing.JMenuItem();
+        menuItemSMS = new javax.swing.JMenuItem();
+        menuItemEmail = new javax.swing.JMenuItem();
+        menuItemSIR = new javax.swing.JMenuItem();
         menuItemShowLists = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -160,13 +158,37 @@ public class InputSessionForm extends NapierBankFormBase {
 
         menuFile.setText("File");
 
-        menuItemOpenFile.setText("Load messages from file");
-        menuItemOpenFile.addActionListener(new java.awt.event.ActionListener() {
+        menuItemTweet.setText("Load Tweets from file");
+        menuItemTweet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemOpenFileActionPerformed(evt);
+                menuItemTweetActionPerformed(evt);
             }
         });
-        menuFile.add(menuItemOpenFile);
+        menuFile.add(menuItemTweet);
+
+        menuItemSMS.setText("Load SMS from file");
+        menuItemSMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSMSActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuItemSMS);
+
+        menuItemEmail.setText("Load Emails from file");
+        menuItemEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemEmailActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuItemEmail);
+
+        menuItemSIR.setText("Load SIR from file");
+        menuItemSIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSIRActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuItemSIR);
 
         menuItemShowLists.setText("Close current session");
         menuItemShowLists.addActionListener(new java.awt.event.ActionListener() {
@@ -226,15 +248,18 @@ public class InputSessionForm extends NapierBankFormBase {
         closeSession();
     }//GEN-LAST:event_btnEndSessionActionPerformed
 
-    private void menuItemOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemOpenFileActionPerformed
+    private void menuItemTweetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTweetActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_IOFILES));
+        fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_TWEETS));
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath()); 
+            ReadMessages rm = new ReadMessages(service, service.readTweets(selectedFile.getAbsolutePath()));
+            rm.setLocationRelativeTo(null);
+            rm.setVisible(true);
         }      
-    }//GEN-LAST:event_menuItemOpenFileActionPerformed
+    }//GEN-LAST:event_menuItemTweetActionPerformed
 
     private void menuItemShowListsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemShowListsActionPerformed
         closeSession();
@@ -248,6 +273,37 @@ public class InputSessionForm extends NapierBankFormBase {
 
     }//GEN-LAST:event_formWindowClosing
 
+    private void menuItemSMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSMSActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_SMS));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath()); 
+            service.readSms(selectedFile.getAbsolutePath());
+        } 
+    }//GEN-LAST:event_menuItemSMSActionPerformed
+
+    private void menuItemEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEmailActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_EMAILS));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());       
+        } 
+    }//GEN-LAST:event_menuItemEmailActionPerformed
+
+    private void menuItemSIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSIRActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_SIR));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());       
+        } 
+    }//GEN-LAST:event_menuItemSIRActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -260,8 +316,11 @@ public class InputSessionForm extends NapierBankFormBase {
     private javax.swing.JMenuBar mainMenu;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu menuFile;
-    private javax.swing.JMenuItem menuItemOpenFile;
+    private javax.swing.JMenuItem menuItemEmail;
+    private javax.swing.JMenuItem menuItemSIR;
+    private javax.swing.JMenuItem menuItemSMS;
     private javax.swing.JMenuItem menuItemShowLists;
+    private javax.swing.JMenuItem menuItemTweet;
     private javax.swing.JPanel secondPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -33,8 +33,13 @@ public class Tweet extends MessageAbbreviation {
             @JsonProperty(value = "hashtags", access = JsonProperty.Access.READ_WRITE) ArrayList<String> hashtags,
             @JsonProperty(value = "mentions", access = JsonProperty.Access.READ_WRITE) ArrayList<String> mentions) {
         super(msgId, msgSender, msgBody);
-        this.hashtags = hashtags;
-        this.mentions = mentions;
+        if(hashtags != null){
+            this.hashtags = hashtags;
+            this.mentions = mentions;
+        }else{
+            this.hashtags = new ArrayList();
+            this.mentions = new ArrayList();  
+        }
     }
 
     @Override
@@ -65,7 +70,7 @@ public class Tweet extends MessageAbbreviation {
         for (int i = 0; i < wordsTweet.length; i++) {
             if (wordsTweet[i].length() > 0 && wordsTweet[i].charAt(0) == '@') {
                 // Only one appearance in each tweet
-                if (!mentions.contains(wordsTweet[i])) {
+                if (mentions != null && !mentions.contains(wordsTweet[i])) {
                     mentions.add(wordsTweet[i]);
                 }
             }
@@ -89,11 +94,14 @@ public class Tweet extends MessageAbbreviation {
             for (String s : mentions) {
                 men += s + ",";
             }
+            men = men.substring(0, men.length() - 1);
         }
         if (hashtags != null) {
             for (String x : hashtags) {
                 has += x + ",";
             }
+            has = has.substring(0, has.length() - 1);
+
         }
         return "[ID: " + this.msgId + "] \n"
                 + "[User: " + this.msgSender + "] \n"

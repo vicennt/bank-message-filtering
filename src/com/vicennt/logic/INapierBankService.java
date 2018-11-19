@@ -8,10 +8,10 @@ import java.util.Map;
  * @author vicent
  */
 public interface INapierBankService {    
-    ArrayList<Tweet> readTweets();
-    ArrayList<Sms> readSms();
-    ArrayList<Email> readEmails();
-    ArrayList<EmailSIR> readSir();
+    ArrayList<Tweet> readTweets(String filename);
+    ArrayList<Sms> readSms(String filename);
+    ArrayList<Email> readEmails(String filename);
+    ArrayList<EmailSIR> readSir(String filename);
     
     void addTweet(Tweet t);
     void addSMS(Sms s);

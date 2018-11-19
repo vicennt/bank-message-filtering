@@ -154,23 +154,34 @@ public class NapierBankService implements INapierBankService {
     }
 
     @Override
-    public ArrayList<Tweet> readTweets() {
-        return dal.readTweets();
+    public ArrayList<Tweet> readTweets(String filename) {
+        ArrayList<Tweet> tweetsJSON = dal.readTweets(filename);
+        for(Tweet t : tweetsJSON){
+            t.getHashtags();
+            t.getMentions();
+            this.tweets.add(t);
+        }
+        return tweetsJSON;
     }
 
     @Override
-    public ArrayList<Sms> readSms() {
-        return dal.readSms();
+    public ArrayList<Sms> readSms(String filename) {
+        ArrayList<Sms> smsJSON = dal.readSms(filename);
+        for(Sms s : smsJSON){
+            this.sms.add(s);
+        }
+        return smsJSON;
     }
 
     @Override
-    public ArrayList<Email> readEmails() {
-        return dal.readEmails();
+    public ArrayList<Email> readEmails(String filename) {
+        return dal.readEmails(filename);
     }
 
     @Override
-    public ArrayList<EmailSIR> readSir() {
-        return dal.readEmailsSIR();
+    public ArrayList<EmailSIR> readSir(String filename) {
+        
+        return dal.readEmailsSIR(filename);
     }
 
     @Override

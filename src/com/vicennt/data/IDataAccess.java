@@ -15,9 +15,9 @@ import java.util.Map;
 public interface IDataAccess {
     // All operation with data
     Map<String, String> getAbbreviations();
-    ArrayList<Tweet> readTweets();
-    ArrayList<Sms> readSms();
-    ArrayList<Email> readEmails();
-    ArrayList<EmailSIR> readEmailsSIR();
+    ArrayList<Tweet> readTweets(String filename);
+    ArrayList<Sms> readSms(String filename);
+    ArrayList<Email> readEmails(String filename);
+    ArrayList<EmailSIR> readEmailsSIR(String filename);
     void writeMessages(ArrayList t, String filename);
 }

@@ -58,9 +58,9 @@ public class DataAccess implements IDataAccess {
     }
 
     @Override
-    public ArrayList<Tweet> readTweets() {
+    public ArrayList<Tweet> readTweets(String filename) {
         try {
-            File file = new File(Constants.JSON_TWEET_FILE_PATH);
+            File file = new File(filename);
             ObjectMapper mapper = new ObjectMapper();
             return mapper.readValue(file, new TypeReference<ArrayList<Tweet>>() {
             });
@@ -70,9 +70,9 @@ public class DataAccess implements IDataAccess {
     }
 
     @Override
-    public ArrayList<Sms> readSms() {
+    public ArrayList<Sms> readSms(String filename) {
         try {
-            File file = new File(Constants.JSON_SMS_FILE_PATH);
+            File file = new File(filename);
             ObjectMapper mapper = new ObjectMapper();
             return mapper.readValue(file, new TypeReference<ArrayList<Sms>>() {
             });
@@ -82,9 +82,9 @@ public class DataAccess implements IDataAccess {
     }
 
     @Override
-    public ArrayList<Email> readEmails() {
+    public ArrayList<Email> readEmails(String filename) {
         try {
-            File file = new File(Constants.JSON_EMAIL_FILE_PATH);
+            File file = new File(filename);
             ObjectMapper mapper = new ObjectMapper();
             return mapper.readValue(file, new TypeReference<ArrayList<Email>>() {
             });
@@ -94,9 +94,9 @@ public class DataAccess implements IDataAccess {
     }
 
     @Override
-    public ArrayList<EmailSIR> readEmailsSIR() {
+    public ArrayList<EmailSIR> readEmailsSIR(String filename) {
         try {
-            File file = new File(Constants.JSON_SIR_FILE_PATH);
+            File file = new File(filename);
             ObjectMapper mapper = new ObjectMapper();
             return mapper.readValue(file, new TypeReference<ArrayList<EmailSIR>>() {
             });
