@@ -15,10 +15,9 @@ import java.util.Map;
 public interface IDataAccess {
     // All operation with data
     Map<String, String> getAbbreviations();
-    void writeMessagesJSON(ArrayList<Tweet> tweets, ArrayList<Sms> sms, ArrayList<Email> emails,
-            ArrayList<EmailSIR> emailsSIr);
-    ArrayList<String> readTweets();
-    ArrayList<String> readSms();
-    ArrayList<String> readEmails();
-    ArrayList<String> readEmailsSIR();
+    ArrayList<Tweet> readTweets();
+    ArrayList<Sms> readSms();
+    ArrayList<Email> readEmails();
+    ArrayList<EmailSIR> readEmailsSIR();
+    void writeMessages(ArrayList t, String filename);
 }

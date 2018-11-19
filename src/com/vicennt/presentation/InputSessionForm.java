@@ -1,12 +1,14 @@
 package com.vicennt.presentation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vicennt.constants.Constants;
 import com.vicennt.logic.INapierBankService;
 import com.vicennt.logic.Tweet;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -22,7 +24,6 @@ public class InputSessionForm extends NapierBankFormBase {
     
     private void closeSession(){
         ListsForm lf = new ListsForm(service);
-        service.writeMessagesJSON();
         lf.setLocationRelativeTo(null);
         lf.setVisible(true);
     }
@@ -226,14 +227,13 @@ public class InputSessionForm extends NapierBankFormBase {
     }//GEN-LAST:event_btnEndSessionActionPerformed
 
     private void menuItemOpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemOpenFileActionPerformed
-        ObjectMapper om = new ObjectMapper();
-        try {
-            File file = new File("./iofiles/result.json");
-            Tweet t = om.readValue(file, Tweet.class);
-            System.out.println(t.toString());
-        } catch (IOException ex) {
-            Logger.getLogger(InputSessionForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_IOFILES));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+        }      
     }//GEN-LAST:event_menuItemOpenFileActionPerformed
 
     private void menuItemShowListsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemShowListsActionPerformed

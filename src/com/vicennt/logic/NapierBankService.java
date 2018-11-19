@@ -12,6 +12,7 @@ import static java.util.stream.Collectors.toMap;
  *
  * @author vicent
  */
+
 public class NapierBankService implements INapierBankService {
 
     private ArrayList<Tweet> tweets;
@@ -46,7 +47,7 @@ public class NapierBankService implements INapierBankService {
     }
 
     @Override
-    public void addEmailSir(EmailSIR es) {
+    public void addSir(EmailSIR es) {
         this.sirEmails.add(es);
     }
 
@@ -70,14 +71,6 @@ public class NapierBankService implements INapierBankService {
         return sirEmails;
     }
 
-    @Override
-    public void loadMessages() {
-    }
-
-    @Override
-    public void writeMessagesJSON() {
-        dal.writeMessagesJSON(tweets, sms, emails, sirEmails);
-    }
 
     @Override
     public Map<String, String> getAbbreviations() {
@@ -158,5 +151,30 @@ public class NapierBankService implements INapierBankService {
     @Override
     public int getNumberOfMessages() {
         return tweets.size() + sms.size() + emails.size() + sirEmails.size();
+    }
+
+    @Override
+    public ArrayList<Tweet> readTweets() {
+        return dal.readTweets();
+    }
+
+    @Override
+    public ArrayList<Sms> readSms() {
+        return dal.readSms();
+    }
+
+    @Override
+    public ArrayList<Email> readEmails() {
+        return dal.readEmails();
+    }
+
+    @Override
+    public ArrayList<EmailSIR> readSir() {
+        return dal.readEmailsSIR();
+    }
+
+    @Override
+    public void writeMessages(ArrayList t, String filename) {
+        dal.writeMessages(t, filename);
     }
 }

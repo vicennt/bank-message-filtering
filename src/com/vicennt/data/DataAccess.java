@@ -1,7 +1,9 @@
 package com.vicennt.data;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SequenceWriter;
+import com.vicennt.constants.Constants;
 import com.vicennt.logic.Email;
 import com.vicennt.logic.EmailSIR;
 import com.vicennt.logic.Sms;
@@ -10,7 +12,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -25,7 +29,7 @@ public class DataAccess implements IDataAccess {
 
     @Override
     public Map<String, String> getAbbreviations() {
-        File file = new File("./iofiles/textwords.csv");
+        File file = new File(Constants.PATH_TO_ABBREVIATION);
         Scanner inputStream;
         Map<String, String> abbreviations = new HashMap<String, String>();
         try {
@@ -54,18 +58,63 @@ public class DataAccess implements IDataAccess {
     }
 
     @Override
-    public void writeMessagesJSON(ArrayList<Tweet> tweets, ArrayList<Sms> sms, ArrayList<Email> emails,
-            ArrayList<EmailSIR> emailsSIr) {
+    public ArrayList<Tweet> readTweets() {
+        try {
+            File file = new File(Constants.JSON_TWEET_FILE_PATH);
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(file, new TypeReference<ArrayList<Tweet>>() {
+            });
+        } catch (IOException ex) {
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Sms> readSms() {
+        try {
+            File file = new File(Constants.JSON_SMS_FILE_PATH);
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(file, new TypeReference<ArrayList<Sms>>() {
+            });
+        } catch (IOException ex) {
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Email> readEmails() {
+        try {
+            File file = new File(Constants.JSON_EMAIL_FILE_PATH);
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(file, new TypeReference<ArrayList<Email>>() {
+            });
+        } catch (IOException ex) {
+            return null;
+        }
+    }
+
+    @Override
+    public ArrayList<EmailSIR> readEmailsSIR() {
+        try {
+            File file = new File(Constants.JSON_SIR_FILE_PATH);
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(file, new TypeReference<ArrayList<EmailSIR>>() {
+            });
+        } catch (IOException ex) {
+            return null;
+        }
+    }
+
+    @Override
+    public void writeMessages(ArrayList t, String filename) {
         FileWriter fileWriter = null;
         try {
-            File file = new File("./iofiles/messages_out.json");
-            fileWriter = new FileWriter(file, true);
+            Date date = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd_MM_yy_HH:mm:ss");
+            File file = new File(filename + "_" + dateFormat.format(date) + ".json");
+            fileWriter = new FileWriter(file);
             ObjectMapper mapper = new ObjectMapper();
-            SequenceWriter seqWriter = mapper.writer().writeValuesAsArray(fileWriter);
-            seqWriter.write(sms);
-            seqWriter.write(tweets);
-            seqWriter.write(emails);
-            seqWriter.write(emailsSIr);
+            mapper.writeValue(file, t);
         } catch (IOException ex) {
             Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -75,29 +124,5 @@ public class DataAccess implements IDataAccess {
                 Logger.getLogger(DataAccess.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-
-    @Override
-    public ArrayList<String> readTweets() {
-        //TODO: Read tweets from JSON
-        return null;
-    }
-
-    @Override
-    public ArrayList<String> readSms() {
-        //TODO: Read sms from JSON
-        return null;
-    }
-
-    @Override
-    public ArrayList<String> readEmails() {
-        //TODO: Read emails from JSON
-        return null;
-    }
-
-    @Override
-    public ArrayList<String> readEmailsSIR() {
-        //TODO: Read SIR emails from JSON
-        return null;
     }
 }

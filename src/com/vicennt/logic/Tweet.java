@@ -26,7 +26,7 @@ public class Tweet extends MessageAbbreviation {
         getHashtags();
         getMentions();
     }
-     
+
     public Tweet(@JsonProperty(value = "msgId", access = JsonProperty.Access.READ_WRITE) String msgId,
             @JsonProperty(value = "msgSender", access = JsonProperty.Access.READ_WRITE) String msgSender,
             @JsonProperty(value = "msgBody", access = JsonProperty.Access.READ_WRITE) String msgBody,
@@ -36,25 +36,21 @@ public class Tweet extends MessageAbbreviation {
         this.hashtags = hashtags;
         this.mentions = mentions;
     }
-    
 
     @Override
     public boolean validateMessage() {
-        if(this.msgId != null && this.msgSender != null && this.msgBody != null &&
-                this.msgSender.length() < 15 && this.msgBody.length() < 140){
+        if (this.msgId != null && this.msgSender != null && this.msgBody != null
+                && this.msgSender.length() < 15 && this.msgBody.length() < 140) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-        
-    
-    
 
     public ArrayList<String> getHashtags() {
-        String[] wordsTweet = msgBody.split(" ");     
+        String[] wordsTweet = msgBody.split(" ");
         for (int i = 0; i < wordsTweet.length; i++) {
-            if (wordsTweet[i].length() > 0 && wordsTweet[i].charAt(0)== '#') {
+            if (wordsTweet[i].length() > 0 && wordsTweet[i].charAt(0) == '#') {
                 // Only one appearance in each tweet
                 if (!hashtags.contains(wordsTweet[i])) {
                     hashtags.add(wordsTweet[i]);
@@ -89,11 +85,15 @@ public class Tweet extends MessageAbbreviation {
     public String toString() {
         String men = "";
         String has = "";
-        for (String s : mentions) {
-            men += s + ",";
+        if (mentions != null) {
+            for (String s : mentions) {
+                men += s + ",";
+            }
         }
-        for (String x : hashtags) {
-            has += x + ",";
+        if (hashtags != null) {
+            for (String x : hashtags) {
+                has += x + ",";
+            }
         }
         return "[ID: " + this.msgId + "] \n"
                 + "[User: " + this.msgSender + "] \n"

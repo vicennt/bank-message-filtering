@@ -337,7 +337,7 @@ public class EmailForm extends NapierBankFormBase {
             if (sir.validateMessage()) {
                 errorForm = false;
                 sir.removeURLS();
-                service.addEmailSir(sir);
+                service.addSir(sir);
             }
         } else {
             Email sem = new Email(id, address, body, subject);
