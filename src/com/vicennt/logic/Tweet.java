@@ -8,6 +8,7 @@ import java.util.Map;
  *
  * @author vicent
  */
+
 public class Tweet extends MessageAbbreviation {
 
     ArrayList<String> hashtags;
@@ -92,22 +93,17 @@ public class Tweet extends MessageAbbreviation {
         String has = "";
         if (mentions != null) {
             for (String s : mentions) {
-                men += s + ",";
+                men += s + " ";
             }
-            men = men.substring(0, men.length() - 1);
         }
         if (hashtags != null) {
             for (String x : hashtags) {
-                has += x + ",";
+                has += x + " ";
             }
-            has = has.substring(0, has.length() - 1);
-
         }
-        return "[ID: " + this.msgId + "] \n"
-                + "[User: " + this.msgSender + "] \n"
-                + "[Body: " + this.msgBody + "] \n"
-                + "[Hashtags: [" + has + "]] \n"
-                + "[Mentions: [" + men + "]]";
+        return super.toString() + "\n"
+                + "Hashtags: [" + has + "] \n"
+                + "Mentions: [" + men + "]";
     }
 
 }

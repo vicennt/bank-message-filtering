@@ -43,9 +43,9 @@ public abstract class Message {
     
     @Override
     public String toString() {
-        return "[ID: " + this.msgId + "] \n" +
-               "[Sender: " + this.msgSender  + "] \n" +
-               "[Body: " + this.msgBody + "]";
+        return "Message ID: " + this.msgId + " \n" +
+               "Sender: " + this.msgSender  + " \n" +
+               "Body:  \n" + this.msgBody + "";
     }
     
 }

@@ -81,11 +81,11 @@ public class Email extends Message {
             quarantine += "[" + url + "]";
         }
 
-        return "[ID: " + this.msgId + "] \n"
-                + "[Address: " + this.msgSender + "] \n"
-                + "[Subject: " + this.subject + "] \n"
-                + "[Body: " + this.msgBody + "] \n"
-                + "[Quarantine List: [" + quarantine + "]";
+        return "Message ID: " + this.msgId + " \n"
+                + "Sender: " + this.msgSender + " \n"
+                + "Subject: " + this.subject + " \n"
+                + "Body: \n" + this.msgBody + " \n"
+                + "Quarantine List: [" + quarantine + "]";
     }
 
 }

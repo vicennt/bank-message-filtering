@@ -1,29 +1,45 @@
 package com.vicennt.presentation;
 
 import com.vicennt.constants.Constants;
+import com.vicennt.logic.Email;
+import com.vicennt.logic.EmailSIR;
 import com.vicennt.logic.INapierBankService;
+import com.vicennt.logic.Sms;
+import com.vicennt.logic.Tweet;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 
 /**
  *
  * @author vicent
  */
-
 public class InputSessionForm extends NapierBankFormBase {
 
     public InputSessionForm(INapierBankService service) {
         super(service);
         initComponents();
     }
-    
-    private void closeSession(){
+
+    private void closeSession() {
         ListsForm lf = new ListsForm(service);
         lf.setLocationRelativeTo(null);
         lf.setVisible(true);
+        ArrayList<Sms> sms = service.getSms(); 
+        ArrayList<Tweet> tweet = service.getTweets();
+        ArrayList<Email> emails = service.getEmails();
+        ArrayList<EmailSIR> sirs = service.getSirEmails();
+        
+        if(!sms.isEmpty())
+            service.writeMessages(sms, Constants.PATH_TO_SMS);
+        if(!tweet.isEmpty())
+            service.writeMessages(tweet, Constants.PATH_TO_TWEETS);
+        if(!emails.isEmpty())
+            service.writeMessages(emails, Constants.PATH_TO_EMAILS);
+        if(!sirs.isEmpty())
+            service.writeMessages(sirs, Constants.PATH_TO_SIR);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -45,14 +61,6 @@ public class InputSessionForm extends NapierBankFormBase {
         menuItemShowLists = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
 
         lblSendMsg.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
         lblSendMsg.setText("Welcome, you are in an Input Session");
@@ -254,24 +262,16 @@ public class InputSessionForm extends NapierBankFormBase {
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            System.out.println("Selected file: " + selectedFile.getAbsolutePath()); 
+            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
             ReadMessages rm = new ReadMessages(service, service.readTweets(selectedFile.getAbsolutePath()));
             rm.setLocationRelativeTo(null);
             rm.setVisible(true);
-        }      
+        }
     }//GEN-LAST:event_menuItemTweetActionPerformed
 
     private void menuItemShowListsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemShowListsActionPerformed
         closeSession();
     }//GEN-LAST:event_menuItemShowListsActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-  
-    }//GEN-LAST:event_formWindowClosed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-
-    }//GEN-LAST:event_formWindowClosing
 
     private void menuItemSMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSMSActionPerformed
         JFileChooser fileChooser = new JFileChooser();
@@ -279,9 +279,10 @@ public class InputSessionForm extends NapierBankFormBase {
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            System.out.println("Selected file: " + selectedFile.getAbsolutePath()); 
-            service.readSms(selectedFile.getAbsolutePath());
-        } 
+            ReadMessages rm = new ReadMessages(service, service.readSms(selectedFile.getAbsolutePath()));
+            rm.setLocationRelativeTo(null);
+            rm.setVisible(true);
+        }
     }//GEN-LAST:event_menuItemSMSActionPerformed
 
     private void menuItemEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEmailActionPerformed
@@ -290,8 +291,10 @@ public class InputSessionForm extends NapierBankFormBase {
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            System.out.println("Selected file: " + selectedFile.getAbsolutePath());       
-        } 
+            ReadMessages rm = new ReadMessages(service, service.readEmails(selectedFile.getAbsolutePath()));
+            rm.setLocationRelativeTo(null);
+            rm.setVisible(true);
+        }
     }//GEN-LAST:event_menuItemEmailActionPerformed
 
     private void menuItemSIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSIRActionPerformed
@@ -300,10 +303,11 @@ public class InputSessionForm extends NapierBankFormBase {
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
-            System.out.println("Selected file: " + selectedFile.getAbsolutePath());       
-        } 
+            ReadMessages rm = new ReadMessages(service, service.readSir(selectedFile.getAbsolutePath()));
+            rm.setLocationRelativeTo(null);
+            rm.setVisible(true);
+        }
     }//GEN-LAST:event_menuItemSIRActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -18,6 +18,7 @@ public class ReadMessages extends NapierBankFormBase {
      * Creates new form ReadMessages
      * @param service
      */
+    
     private ArrayList messages;
     private int index;
     public ReadMessages(INapierBankService service, ArrayList messages) {
@@ -27,6 +28,8 @@ public class ReadMessages extends NapierBankFormBase {
             this.messages = messages;
             index = 0;
             btnPrevious.setEnabled(false);
+            if(messages.size() <= 1)
+                btnNext.setEnabled(false);
         }
         showMessages(index);
     }

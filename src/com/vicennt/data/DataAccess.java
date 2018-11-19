@@ -110,8 +110,8 @@ public class DataAccess implements IDataAccess {
         FileWriter fileWriter = null;
         try {
             Date date = new Date();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd_MM_yy_HH:mm:ss");
-            File file = new File(filename + "_" + dateFormat.format(date) + ".json");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyy_HH:mm:ss");
+            File file = new File(filename + dateFormat.format(date) + ".json");
             fileWriter = new FileWriter(file);
             ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(file, t);
