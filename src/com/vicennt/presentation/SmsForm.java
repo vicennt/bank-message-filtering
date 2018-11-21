@@ -64,6 +64,7 @@ public class SmsForm extends NapierBankFormBase {
         txtSmsBody.setRows(5);
         scrollSmsBody.setViewportView(txtSmsBody);
 
+        txtSmsType.setEditable(false);
         txtSmsType.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
         txtSmsType.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtSmsType.setText("S");
@@ -138,7 +139,7 @@ public class SmsForm extends NapierBankFormBase {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(mainSmsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

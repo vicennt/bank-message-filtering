@@ -14,8 +14,6 @@ public abstract class Message {
         this.msgSender = msgSender;
         this.msgBody = msgBody;
     }
-    
-    public abstract boolean validateMessage();
 
     public String getMsgId() {
         return msgId;
@@ -39,6 +37,10 @@ public abstract class Message {
 
     public void setMsgBody(String msgBody) {
         this.msgBody = msgBody;
+    }
+    
+    public boolean validateMessage(){
+        return msgId.length() == 9;
     }
     
     @Override

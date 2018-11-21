@@ -47,6 +47,7 @@ public class TweetForm extends NapierBankFormBase {
 
         lblTweetId.setText("ID Message");
 
+        txtTweetType.setEditable(false);
         txtTweetType.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
         txtTweetType.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTweetType.setText("T");

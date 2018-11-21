@@ -50,7 +50,7 @@ public class Tweet extends MessageAbbreviation {
      */
     @Override
     public boolean validateMessage() {
-        if (this.msgId != null && this.msgSender != null && this.msgBody != null
+        if (super.validateMessage() && this.msgId != null && this.msgSender != null && this.msgBody != null
                 && this.msgSender.length() < 15 && this.msgBody.length() < 140) {
             return true;
         } else {

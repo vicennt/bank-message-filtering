@@ -65,7 +65,7 @@ public class Email extends Message {
                             "A-Z]{2,7}$"; 
                               
         Pattern pat = Pattern.compile(emailRegex); 
-        if (this.msgSender != null  && this.msgId != null &&
+        if (super.validateMessage() && this.msgSender != null  && this.msgId != null &&
                 this.msgBody != null && subject != null &&
                 pat.matcher(this.msgSender).matches() &&
                 subject.length() < 20 && this.msgBody.length() < 1028){

@@ -133,6 +133,7 @@ public class EmailForm extends NapierBankFormBase {
 
         lblEmailId.setText("Message ID");
 
+        txtEmailType.setEditable(false);
         txtEmailType.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
         txtEmailType.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEmailType.setText("E");
@@ -192,7 +193,7 @@ public class EmailForm extends NapierBankFormBase {
                     .addGroup(panelSIRLayout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addComponent(lblSortCode, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelSIRLayout.setVerticalGroup(
             panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,14 +338,17 @@ public class EmailForm extends NapierBankFormBase {
             String natureIncident = comboEmailIncident.getSelectedItem().toString();
             EmailSIR sir = new EmailSIR(id, address, body,
                     subject, sortCode, natureIncident);
-            if (sir.validateMessage()) {
+
+            if (sir.validateMessage() && txtSorCode1.getText().length() == 2 && 
+                    txtSortCode2.getText().length() == 2 && 
+                    txtSortCode3.getText().length() == 2) {
                 errorForm = false;
                 sir.removeURLS();
                 service.addSir(sir);
             }
         } else {
             Email sem = new Email(id, address, body, subject);
-            if (sem.validateMessage()) {
+            if (sem.validateMessage()) {             
                 errorForm = false;
                 sem.removeURLS();
                 service.addEmail(sem);
