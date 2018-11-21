@@ -6,10 +6,19 @@ package com.vicennt.constants;
  */
 
 public class Constants {
-    public static final String PATH_TO_IOFILES = "./iofiles/";
-    public static final String PATH_TO_TWEETS = PATH_TO_IOFILES + "tweets/";
-    public static final String PATH_TO_SMS = PATH_TO_IOFILES + "sms/";
-    public static final String PATH_TO_EMAILS = PATH_TO_IOFILES + "emails/";
-    public static final String PATH_TO_SIR = PATH_TO_IOFILES + "sirs/";
-    public static final String PATH_TO_ABBREVIATION = PATH_TO_IOFILES + "textwords.csv";
+    // Linux paths
+    public static final String PATH_TO_IOFILES_LINUX = "./iofiles/";
+    public static final String PATH_TO_TWEETS_LINUX = PATH_TO_IOFILES_LINUX + "tweets/";
+    public static final String PATH_TO_SMS_LINUX = PATH_TO_IOFILES_LINUX + "sms/";
+    public static final String PATH_TO_EMAILS_LINUX = PATH_TO_IOFILES_LINUX + "emails/";
+    public static final String PATH_TO_SIR_LINUX = PATH_TO_IOFILES_LINUX + "sirs/";
+    public static final String PATH_TO_ABBREVIATION_LINUX = PATH_TO_IOFILES_LINUX + "textwords.csv";
+
+    // Windows paths
+    public static final String PATH_TO_IOFILES_WIN = "\\iofiles\\";
+    public static final String PATH_TO_TWEETS_WIN = PATH_TO_IOFILES_WIN + "tweets\\";
+    public static final String PATH_TO_SMS_WIN = PATH_TO_IOFILES_WIN + "sms\\";
+    public static final String PATH_TO_EMAILS_WIN = PATH_TO_IOFILES_WIN + "emails\\";
+    public static final String PATH_TO_SIR_WIN = PATH_TO_IOFILES_WIN + "sirs\\";
+    public static final String PATH_TO_ABBREVIATION_WIN = PATH_TO_IOFILES_WIN + "textwords.csv";
 }

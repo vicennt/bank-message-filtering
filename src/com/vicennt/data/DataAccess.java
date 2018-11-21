@@ -2,7 +2,6 @@ package com.vicennt.data;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SequenceWriter;
 import com.vicennt.constants.Constants;
 import com.vicennt.logic.Email;
 import com.vicennt.logic.EmailSIR;
@@ -12,6 +11,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,7 +37,15 @@ public class DataAccess implements IDataAccess {
     */
     @Override
     public Map<String, String> getAbbreviations() {
-        File file = new File(Constants.PATH_TO_ABBREVIATION);
+        Path currentRelativePath = Paths.get("");
+        String c = currentRelativePath.toAbsolutePath().toString();
+        File file = null;
+        if(System.getProperty("os.name").contains("Linux")){
+            file = new File(Constants.PATH_TO_ABBREVIATION_LINUX);
+        }else if (System.getProperty("os.name").contains("Windows")) {
+            file = new File(c + Constants.PATH_TO_ABBREVIATION_WIN);
+        }
+        
         Scanner inputStream;
         Map<String, String> abbreviations = new HashMap<String, String>();
         try {
@@ -69,6 +78,7 @@ public class DataAccess implements IDataAccess {
     * This method reads tweets from JSON file 
     * and convert them to an ArrayList with Tweet objects
     * @param filename name of the file
+     * @return 
     */
     @Override
     public ArrayList<Tweet> readTweets(String filename) {
@@ -140,13 +150,14 @@ public class DataAccess implements IDataAccess {
     */
 
     @Override
-    public void writeMessages(ArrayList t, String filename) {
+    public void writeMessages(ArrayList t, String path) {
         FileWriter fileWriter = null;
         try {
             Date date = new Date();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyy_HH:mm:ss");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyHHmmss");
             // Create a filename with current date and hour
-            File file = new File(filename + dateFormat.format(date) + ".json");
+            String filename = dateFormat.format(date) + ".json";
+            File file = new File(path, filename);
             fileWriter = new FileWriter(file);
             ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(file, t);

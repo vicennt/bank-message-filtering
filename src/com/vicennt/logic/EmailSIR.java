@@ -55,8 +55,6 @@ public class EmailSIR extends Email {
         return "Message ID: " + this.msgId + " \n"
                 + "Sender: " + this.msgSender + " \n"
                 + "Subject: " + this.subject + " \n"
-                + "Sort code: " + this.sortCode + " \n"
-                + "Nature of Incident: " + this.natureIncident + " \n"
                 + "Body: \n" + this.msgBody + " \n"
                 + "Quarantine List: [" + quarantineList + "]";
     }

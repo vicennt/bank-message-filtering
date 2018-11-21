@@ -57,7 +57,7 @@ public class ReadMessages extends NapierBankFormBase {
 
         txtMessagesReaded.setEditable(false);
         txtMessagesReaded.setColumns(20);
-        txtMessagesReaded.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        txtMessagesReaded.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         txtMessagesReaded.setRows(5);
         scrollMessagesReaded.setViewportView(txtMessagesReaded);
 
@@ -90,32 +90,30 @@ public class ReadMessages extends NapierBankFormBase {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(scrollMessagesReaded, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(90, 90, 90)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(mainPanelLayout.createSequentialGroup()
                                 .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(53, 53, 53)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(74, 74, 74)
+                                .addGap(66, 66, 66)
                                 .addComponent(lblPrevious)
-                                .addGap(212, 212, 212)
-                                .addComponent(lblNext)))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                                .addGap(205, 205, 205)
+                                .addComponent(lblNext))
+                            .addComponent(scrollMessagesReaded, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(38, 38, 38)
                 .addComponent(lblTitle)
-                .addGap(37, 37, 37)
-                .addComponent(scrollMessagesReaded, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(scrollMessagesReaded, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPrevious)

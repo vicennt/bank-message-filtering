@@ -7,6 +7,8 @@ import com.vicennt.logic.INapierBankService;
 import com.vicennt.logic.Sms;
 import com.vicennt.logic.Tweet;
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 
@@ -15,34 +17,56 @@ import javax.swing.JFileChooser;
  * @author vicent
  */
 public class InputSessionForm extends NapierBankFormBase {
+    
+    private String c;
 
     public InputSessionForm(INapierBankService service) {
         super(service);
-        initComponents();
+        initComponents();             
+        Path currentRelativePath = Paths.get("");
+        c = currentRelativePath.toAbsolutePath().toString();
     }
-   
-    /**
-     * This method get all the information from the current session
-     * and pass it to logical layer
-     */
 
+    /**
+     * This method get all the information from the current session and pass it
+     * to logical layer
+     */
     private void closeSession() {
         ListsForm lf = new ListsForm(service);
         lf.setLocationRelativeTo(null);
         lf.setVisible(true);
-        ArrayList<Sms> sms = service.getSms(); 
+        ArrayList<Sms> sms = service.getSms();
         ArrayList<Tweet> tweet = service.getTweets();
         ArrayList<Email> emails = service.getEmails();
         ArrayList<EmailSIR> sirs = service.getSirEmails();
-        
-        if(!sms.isEmpty())
-            service.writeMessages(sms, Constants.PATH_TO_SMS);
-        if(!tweet.isEmpty())
-            service.writeMessages(tweet, Constants.PATH_TO_TWEETS);
-        if(!emails.isEmpty())
-            service.writeMessages(emails, Constants.PATH_TO_EMAILS);
-        if(!sirs.isEmpty())
-            service.writeMessages(sirs, Constants.PATH_TO_SIR);
+        if (!sms.isEmpty()) {
+            if (System.getProperty("os.name").contains("Linux")) {
+                service.writeMessages(sms, Constants.PATH_TO_SMS_LINUX);
+            } else if (System.getProperty("os.name").contains("Windows")) {             
+                service.writeMessages(sms, c + Constants.PATH_TO_SMS_WIN);
+            }
+        }
+        if (!tweet.isEmpty()) {
+            if (System.getProperty("os.name").contains("Linux")) {
+                service.writeMessages(tweet, Constants.PATH_TO_TWEETS_LINUX);
+            } else if (System.getProperty("os.name").contains("Windows")) {
+                service.writeMessages(tweet, c + Constants.PATH_TO_TWEETS_WIN);
+            }
+        }
+        if (!emails.isEmpty()) {
+            if (System.getProperty("os.name").contains("Linux")) {
+                service.writeMessages(emails, Constants.PATH_TO_EMAILS_LINUX);
+            } else if (System.getProperty("os.name").contains("Windows")) {
+                service.writeMessages(emails, c + Constants.PATH_TO_EMAILS_WIN);
+            }
+        }
+        if (!sirs.isEmpty()) {
+            if (System.getProperty("os.name").contains("Linux")) {
+                service.writeMessages(sirs, Constants.PATH_TO_SIR_LINUX);
+            } else if (System.getProperty("os.name").contains("Windows")) {
+                service.writeMessages(sirs, c + Constants.PATH_TO_SIR_WIN);
+            }
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -266,7 +290,12 @@ public class InputSessionForm extends NapierBankFormBase {
 
     private void menuItemTweetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTweetActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_TWEETS));
+        if (System.getProperty("os.name").contains("Linux")) {
+            fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_TWEETS_LINUX));
+        } else if (System.getProperty("os.name").contains("Windows")) {
+            fileChooser.setCurrentDirectory(new File(c + Constants.PATH_TO_TWEETS_WIN));
+        }
+
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
@@ -283,7 +312,12 @@ public class InputSessionForm extends NapierBankFormBase {
 
     private void menuItemSMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSMSActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_SMS));
+
+        if (System.getProperty("os.name").contains("Linux")) {
+            fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_SMS_LINUX));
+        } else if (System.getProperty("os.name").contains("Windows")) {
+            fileChooser.setCurrentDirectory(new File(c + Constants.PATH_TO_SMS_WIN));
+        }
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
@@ -295,7 +329,11 @@ public class InputSessionForm extends NapierBankFormBase {
 
     private void menuItemEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEmailActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_EMAILS));
+        if (System.getProperty("os.name").contains("Linux")) {
+            fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_EMAILS_LINUX));
+        } else if (System.getProperty("os.name").contains("Windows")) {
+            fileChooser.setCurrentDirectory(new File(c + Constants.PATH_TO_EMAILS_WIN));
+        }
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
@@ -307,7 +345,11 @@ public class InputSessionForm extends NapierBankFormBase {
 
     private void menuItemSIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSIRActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_SIR));
+        if (System.getProperty("os.name").contains("Linux")) {
+            fileChooser.setCurrentDirectory(new File(Constants.PATH_TO_SIR_LINUX));
+        } else if (System.getProperty("os.name").contains("Windows")) {
+            fileChooser.setCurrentDirectory(new File(c + Constants.PATH_TO_SIR_WIN));
+        }
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
