@@ -95,8 +95,8 @@ public class EmailForm extends NapierBankFormBase {
 
         setResizable(false);
 
-        lblEmailTitle.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
-        lblEmailTitle.setText("Write an Email");
+        lblEmailTitle.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        lblEmailTitle.setText("WRITE AN EMAIL");
 
         lblEmailAddress.setText("Address");
 
@@ -133,7 +133,7 @@ public class EmailForm extends NapierBankFormBase {
 
         lblEmailId.setText("Message ID");
 
-        txtEmailType.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
+        txtEmailType.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
         txtEmailType.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEmailType.setText("E");
 
@@ -147,6 +147,7 @@ public class EmailForm extends NapierBankFormBase {
             }
         });
 
+        lblSortCode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSortCode.setText("Sort Code");
 
         txtSorCode1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -172,25 +173,26 @@ public class EmailForm extends NapierBankFormBase {
         panelSIRLayout.setHorizontalGroup(
             panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSIRLayout.createSequentialGroup()
-                .addGap(42, 60, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblEmailIncident)
-                .addGap(50, 50, 50))
+                .addGap(98, 98, 98))
             .addGroup(panelSIRLayout.createSequentialGroup()
                 .addGroup(panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelSIRLayout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(txtSorCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSortCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSortCode3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelSIRLayout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(lblSortCode))
-                    .addGroup(panelSIRLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(comboEmailIncident, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addGroup(panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboEmailIncident, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelSIRLayout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(txtSorCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSortCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSortCode3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelSIRLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(lblSortCode, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         panelSIRLayout.setVerticalGroup(
             panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,62 +216,60 @@ public class EmailForm extends NapierBankFormBase {
         mainEmailPanelLayout.setHorizontalGroup(
             mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainEmailPanelLayout.createSequentialGroup()
-                .addGap(342, 342, 342)
-                .addComponent(lblEmailTitle)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(mainEmailPanelLayout.createSequentialGroup()
                 .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainEmailPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEmailId)
+                        .addGap(18, 18, 18)
+                        .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnSendEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollEmailBody, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(mainEmailPanelLayout.createSequentialGroup()
-                                .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(mainEmailPanelLayout.createSequentialGroup()
-                                        .addComponent(txtEmailType, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(mainEmailPanelLayout.createSequentialGroup()
-                                        .addGap(42, 42, 42)
-                                        .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(rbtEmailStandard)
-                                            .addComponent(rbtEmailIncident)))
-                                    .addComponent(lblEmailType))
+                                .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblEmailSubject)
+                                    .addComponent(lblEmailBody)
+                                    .addComponent(lblEmailAddress))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtEmailAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                                    .addComponent(txtEmailSubject))
+                                .addGap(221, 221, 221))))
+                    .addGroup(mainEmailPanelLayout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(lblEmailTitle)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(mainEmailPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainEmailPanelLayout.createSequentialGroup()
+                        .addComponent(lblEmailId)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(mainEmailPanelLayout.createSequentialGroup()
+                        .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainEmailPanelLayout.createSequentialGroup()
                                 .addGap(42, 42, 42)
-                                .addComponent(panelSIR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnSendEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(mainEmailPanelLayout.createSequentialGroup()
-                            .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(mainEmailPanelLayout.createSequentialGroup()
-                                    .addGap(21, 21, 21)
-                                    .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblEmailSubject)
-                                        .addComponent(lblEmailBody)))
-                                .addGroup(mainEmailPanelLayout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(lblEmailAddress)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtEmailSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(scrollEmailBody, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                                .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbtEmailStandard)
+                                    .addComponent(rbtEmailIncident)))
+                            .addComponent(lblEmailType)
+                            .addGroup(mainEmailPanelLayout.createSequentialGroup()
+                                .addComponent(txtEmailType, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addComponent(panelSIR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))))
         );
         mainEmailPanelLayout.setVerticalGroup(
             mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainEmailPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(lblEmailTitle)
-                .addGap(41, 41, 41)
-                .addComponent(lblEmailId)
                 .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainEmailPanelLayout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(lblEmailId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEmailType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEmailId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addComponent(lblEmailType)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbtEmailStandard)
@@ -277,9 +277,11 @@ public class EmailForm extends NapierBankFormBase {
                         .addComponent(rbtEmailIncident)
                         .addGap(33, 33, 33))
                     .addGroup(mainEmailPanelLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(49, 49, 49)
+                        .addComponent(lblEmailTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelSIR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)))
                 .addGroup(mainEmailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmailAddress))

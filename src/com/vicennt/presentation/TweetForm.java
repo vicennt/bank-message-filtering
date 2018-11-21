@@ -42,16 +42,16 @@ public class TweetForm extends NapierBankFormBase {
         txtTweetBody = new javax.swing.JTextArea();
         btnSendTweet = new javax.swing.JButton();
 
-        lblTweetTitle.setFont(new java.awt.Font("Ubuntu", 0, 36)); // NOI18N
+        lblTweetTitle.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
         lblTweetTitle.setText("Write an Tweet");
 
         lblTweetId.setText("ID Message");
 
-        txtTweetType.setFont(new java.awt.Font("Ubuntu", 1, 29)); // NOI18N
+        txtTweetType.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
         txtTweetType.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTweetType.setText("T");
 
-        txtTweetId.setFont(new java.awt.Font("Ubuntu", 0, 29)); // NOI18N
+        txtTweetId.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
 
         lblTweetUser.setText("Twitter user");
 
@@ -73,25 +73,24 @@ public class TweetForm extends NapierBankFormBase {
         mainTweetPanelLayout.setHorizontalGroup(
             mainTweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainTweetPanelLayout.createSequentialGroup()
-                .addGroup(mainTweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainTweetPanelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(mainTweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSendTweet)
-                            .addGroup(mainTweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblTweetId)
-                                .addGroup(mainTweetPanelLayout.createSequentialGroup()
-                                    .addComponent(txtTweetType, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtTweetId, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(lblTweetUser)
-                                .addComponent(txtTweetUser, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblTweetBody)
-                                .addComponent(scrollTweetBody, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(mainTweetPanelLayout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(lblTweetTitle)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(mainTweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTweetId, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainTweetPanelLayout.createSequentialGroup()
+                        .addComponent(txtTweetType, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTweetId, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTweetUser, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTweetBody, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainTweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnSendTweet)
+                        .addComponent(scrollTweetBody, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTweetUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainTweetPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTweetTitle)
+                .addGap(188, 188, 188))
         );
         mainTweetPanelLayout.setVerticalGroup(
             mainTweetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +113,7 @@ public class TweetForm extends NapierBankFormBase {
                 .addComponent(scrollTweetBody, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSendTweet)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
