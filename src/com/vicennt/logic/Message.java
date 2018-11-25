@@ -43,6 +43,11 @@ public abstract class Message {
         return msgId.length() == 10;
     }
     
+    /**
+     *
+     * @return Return the attributes in good format
+     */
+    
     @Override
     public String toString() {
         return "Message ID: " + this.msgId + " \n" +
