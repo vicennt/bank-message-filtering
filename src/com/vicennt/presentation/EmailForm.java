@@ -173,27 +173,25 @@ public class EmailForm extends NapierBankFormBase {
         panelSIR.setLayout(panelSIRLayout);
         panelSIRLayout.setHorizontalGroup(
             panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelSIRLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboEmailIncident, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelSIRLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblSortCode, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelSIRLayout.createSequentialGroup()
+                                .addComponent(txtSorCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSortCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSortCode3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSIRLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblEmailIncident)
-                .addGap(98, 98, 98))
-            .addGroup(panelSIRLayout.createSequentialGroup()
-                .addGroup(panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelSIRLayout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addGroup(panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboEmailIncident, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelSIRLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(txtSorCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSortCode2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSortCode3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelSIRLayout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(lblSortCode, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(60, 60, 60))
         );
         panelSIRLayout.setVerticalGroup(
             panelSIRLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,7 +324,7 @@ public class EmailForm extends NapierBankFormBase {
     }//GEN-LAST:event_rbtEmailIncidentActionPerformed
 
     private void btnSendEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendEmailActionPerformed
-        String id = txtEmailId.getText();
+        String id = txtEmailType.getText() + txtEmailId.getText();
         String address = txtEmailAddress.getText();
         String subject = txtEmailSubject.getText();
         String body = txtEmailBody.getText();

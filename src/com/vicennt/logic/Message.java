@@ -40,7 +40,7 @@ public abstract class Message {
     }
     
     public boolean validateMessage(){
-        return msgId.length() == 9;
+        return msgId.length() == 10;
     }
     
     @Override

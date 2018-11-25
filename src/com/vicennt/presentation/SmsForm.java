@@ -31,38 +31,23 @@ public class SmsForm extends NapierBankFormBase {
     private void initComponents() {
 
         mainSmsPanel = new javax.swing.JPanel();
+        txtSmsType = new javax.swing.JTextField();
+        txtSmsId = new javax.swing.JTextField();
         lblSmsMsgId = new javax.swing.JLabel();
         lblTelephone = new javax.swing.JLabel();
-        lblSmsBody = new javax.swing.JLabel();
-        txtSmsId = new javax.swing.JTextField();
         txtSmsPhone = new javax.swing.JTextField();
+        lblSmsBody = new javax.swing.JLabel();
         scrollSmsBody = new javax.swing.JScrollPane();
         txtSmsBody = new javax.swing.JTextArea();
-        txtSmsType = new javax.swing.JTextField();
-        btnSendSms = new javax.swing.JButton();
         lblSmsTitle = new javax.swing.JLabel();
+        btnSendSms = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(700, 800));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
         });
-
-        mainSmsPanel.setMinimumSize(new java.awt.Dimension(700, 700));
-
-        lblSmsMsgId.setText("Message ID");
-
-        lblTelephone.setText("Telephone");
-
-        lblSmsBody.setText("Message body");
-
-        txtSmsId.setToolTipText("");
-
-        txtSmsBody.setColumns(20);
-        txtSmsBody.setRows(5);
-        scrollSmsBody.setViewportView(txtSmsBody);
 
         txtSmsType.setEditable(false);
         txtSmsType.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
@@ -74,15 +59,27 @@ public class SmsForm extends NapierBankFormBase {
             }
         });
 
+        txtSmsId.setToolTipText("");
+
+        lblSmsMsgId.setText("Message ID");
+
+        lblTelephone.setText("Telephone");
+
+        lblSmsBody.setText("Message body");
+
+        txtSmsBody.setColumns(20);
+        txtSmsBody.setRows(5);
+        scrollSmsBody.setViewportView(txtSmsBody);
+
+        lblSmsTitle.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        lblSmsTitle.setText("Write an SMS");
+
         btnSendSms.setText("Send message");
         btnSendSms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSendSmsActionPerformed(evt);
             }
         });
-
-        lblSmsTitle.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
-        lblSmsTitle.setText("Write an SMS");
 
         javax.swing.GroupLayout mainSmsPanelLayout = new javax.swing.GroupLayout(mainSmsPanel);
         mainSmsPanel.setLayout(mainSmsPanelLayout);
@@ -91,32 +88,33 @@ public class SmsForm extends NapierBankFormBase {
             .addGroup(mainSmsPanelLayout.createSequentialGroup()
                 .addGroup(mainSmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainSmsPanelLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addGap(34, 34, 34)
                         .addGroup(mainSmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblSmsMsgId, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTelephone, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSmsBody, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainSmsPanelLayout.createSequentialGroup()
-                                .addComponent(txtSmsType, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSmsId, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainSmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnSendSms)
-                                .addComponent(scrollSmsBody, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtSmsPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnSendSms)
+                            .addGroup(mainSmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(scrollSmsBody, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblTelephone)
+                                .addComponent(lblSmsMsgId)
+                                .addGroup(mainSmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, mainSmsPanelLayout.createSequentialGroup()
+                                        .addComponent(txtSmsType, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtSmsId))
+                                    .addComponent(txtSmsPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblSmsBody))))
                     .addGroup(mainSmsPanelLayout.createSequentialGroup()
-                        .addGap(261, 261, 261)
+                        .addGap(206, 206, 206)
                         .addComponent(lblSmsTitle)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         mainSmsPanelLayout.setVerticalGroup(
             mainSmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainSmsPanelLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addComponent(lblSmsTitle)
-                .addGap(43, 43, 43)
+                .addGap(41, 41, 41)
                 .addComponent(lblSmsMsgId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(mainSmsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSmsId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSmsType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -124,26 +122,27 @@ public class SmsForm extends NapierBankFormBase {
                 .addComponent(lblTelephone)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSmsPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(lblSmsBody)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollSmsBody, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollSmsBody, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSendSms)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainSmsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 65, Short.MAX_VALUE))
+            .addComponent(mainSmsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainSmsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mainSmsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
